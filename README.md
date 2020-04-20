@@ -22,8 +22,6 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 
 ## Interview Questions
 
-> List out the topics covered that students should study and review to be prepared for the questions asked in the TL interview. You can use the list of learning objectives that should be covered by the interview as a start.
-
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What is the purpose of using _sessions_?
@@ -50,8 +48,6 @@ You are expected to be able to answer questions in these areas. Your responses c
 - [ ] Push commits: git push origin `<firstName-lastName>`
 
 ### Task 2: Project Requirements
-
-> This section should include requirements for the sprint challenge itself. The idea is to be explicit with the student about the things their project solution needs to implement, without telling them **how** to do any of these things. Be sure all learning objectives in your sprint challenge list are covered. 
 
 Your finished project must include all of the following requirements:
 
