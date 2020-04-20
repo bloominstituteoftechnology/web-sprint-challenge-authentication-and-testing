@@ -4,7 +4,7 @@
 
 **Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**
 
-This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **`<Sprint Subject Here>`**. During this sprint, you studied **`<High-level sprint topics here>`**. In your challenge this week, you will demonstrate your mastery of these skills by creating **`<describe project here>`**.
+This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **Authentication and Testing**. During this sprint, you studied **authentication, JSON web tokens, unit testing, and backend testing**. In your challenge this week, you will demonstrate your mastery of these skills by creating **a dad jokes app**.
 
 This is an individual assessment. All work must be your own. Your challenge score is a measure of your ability to work independently using the material covered through this sprint. You need to demonstrate proficiency in the concepts and objectives introduced and practiced in preceding days.
 
@@ -15,15 +15,9 @@ _You have **three hours** to complete this challenge. Plan your time accordingly
 
 ## Introduction
 
-> In this section, introduce the challenge,  with a high level explanation of the components of the project.
-> 
-> This section should include examples in the form of screenshots, screen recording GIFs, and/or links to an example.
+In this challenge, you build a real wise-guy application. _Dad jokes_ are all the rage these days. Currently the application is trying to receive some `Dad Jokes`, however we are locked out.
 
-In meeting the minimum viable product (MVP) specifications listed below, your project should look like the solution examples below:
-
- [Sample Screenshot](https://tk-assets.lambdaschool.com/39a49225-8ac9-43da-aa90-514fd60ae99a_sprint-challenge-ui-home-example.png)
-
-[Sample mobile example](https://tk-assets.lambdaschool.com/fbe7ebfc-a4c2-4a32-8929-bbd41fbc4f67_ScreenShot2020-03-25at11.03.41AM.png)
+Implement an User Authentication System. Hash user's passwords before saving them to the database. Use `JSON Web Tokens` or `Sessions and Cookies` to persist authentication across requests.
 
 ### Commits
 
@@ -35,15 +29,13 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
-1. Describe semantic HTML 
+1. What is the purpose of using _sessions_?
 
-2. Understand when and how to use CSS reset
+2. What does bcrypt do to help us store passwords in a secure manner.
 
-3. Understand the use of the command line interface (CLI)
+3. What does bcrypt do to slow down attackers?
 
-4. Explain git commands and why git is valuable to a team of developers.
-
-5. Define mobile-first design in your own words, and the difference in layout types.
+4. What are the three parts of the JSON Web Token?
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 
@@ -66,32 +58,11 @@ You are expected to be able to answer questions in these areas. Your responses c
 
 Your finished project must include all of the following requirements:
 
-> (The following is an example):
+- [ ] Implement the `register` and `login` functionality inside `/auth/auth-router.js`. A `user` has `username` and `password`. Both properties are required.
+- [ ] Implement the `authenticate` middleware inside `/auth/authenticate-middleware.js`.
+- [ ] Write a **minimum o 2 tests** per API endpoint. Write more tests if you have time.
 
-#### Home Page
-
-[Review the provided design file for the home page](design/home.png).  Notice the navigation and header images are missing.
-
-* [ ] Uses Semantic HTML and CSS to create the missing navigation and header
-* [ ] The `About` navigation item must be linked to the [about.html](about.html) page
-* [ ] Your design must be responsive such that it is accessible on mobile(500px) and tablet(800 px) and matches the [mobile](design/mobile.png) wireframe. This functionality must be implemented using flexbox.
-* [ ] Uses all box model properties so that margins, borders, and padding match the wireframes
-* [ ] You must add responsive breakpoints to your code by using media queries
-* [ ] All 10 boxes on the home page are correctly styled with background colors using the guide below:
-
-
-* [ ] box1: `teal`
-* [ ] box2: `gold`
-* [ ] box3: `cadetblue`
-* [ ] box4: `coral`
-* [ ] box5: `crimson`
-* [ ] box6: `forestgreen`
-* [ ] box7: `darkorchid`
-* [ ] box8: `hotpink`
-* [ ] box9: `indigo`
-* [ ] box10: `dodgerblue`
-
-In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
+**Note**: the database already has the users table, but if you run into issues, the migrations are available.
 
 ### Task 3: Stretch Goals 
 
