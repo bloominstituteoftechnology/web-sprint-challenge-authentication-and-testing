@@ -25,8 +25,15 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+    Sessions use cookies to create instances('sessions') which stores user information
+    that remains peristed until deleted. JWT store user information on generated token
+    that is a string of data holding user information.
 
 2. What does `bcrypt` do to help us store passwords in a secure manner.
+    bcrypt secures passwords by hashing them, essentially scrambling the password
+    and breaking it down into layers of strings, this can be increased depending on the 
+    amount of time the hash is set to happen. For dev. puposes, its around 8 and for
+    any production hashes, it is increased, varying on servers, and how much it can handle as it slows down the process a lot.
 
 3. How are unit tests different from integration and end-to-end testing.
 
