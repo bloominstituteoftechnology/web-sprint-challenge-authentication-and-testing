@@ -25,12 +25,22 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+    Sessions use cookies to create instances('sessions') which stores user information
+    that remains peristed until deleted. JWT store user information on generated token
+    that is a string of data holding user information.
 
 2. What does `bcrypt` do to help us store passwords in a secure manner.
+    bcrypt secures passwords by hashing them, essentially scrambling the password
+    and breaking it down into layers of strings, this can be increased depending on the 
+    amount of time the hash is set to happen. For dev. puposes, its around 8 and for
+    any production hashes, it is increased, varying on servers, and how much it can handle as it slows down the process a lot.
 
 3. How are unit tests different from integration and end-to-end testing.
+    - unit testing focuses on individual parts and tests those parts alone,
+    - integration and end to end focuses on 2 or more working together
 
 4. How _Test Driven Development_ changes the way we write applications and tests.
+    rigorous testing of application as it develops
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
@@ -38,21 +48,21 @@ You are expected to be able to answer questions in these areas. Your responses c
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: git push origin `<firstName-lastName>`
+- [+] Create a forked copy of this project
+- [+] Add your team lead as collaborator on Github
+- [+] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [+] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [+] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [+] Push commits: git push origin `<firstName-lastName>`
 
 ### Task 2: Project Requirements
 
 Your finished project must include all of the following requirements:
 
-- [ ] An authentication workflow with functionality for account creation and login implemented inside `/auth/auth-router.js`. A `user` has `username` and `password`. Both properties are required.
-- [ ] Middleware used to restrict access to resources for non authenticated requests. Use the file: `./auth/authenticate-middleware.js` as a starting point.
-- [ ] Configuration for running tests using `Jest`.
-- [ ] A **minimum o 2 tests** per API endpoint.
+- [+] An authentication workflow with functionality for account creation and login implemented inside `/auth/auth-router.js`. A `user` has `username` and `password`. Both properties are required.
+- [+] Middleware used to restrict access to resources for non authenticated requests. Use the file: `./auth/authenticate-middleware.js` as a starting point.
+- [+] Configuration for running tests using `Jest`.
+- [+] A **minimum o 2 tests** per API endpoint.
 
 **Note**: the database already has the users table, but if you run into issues, the migrations are available.
 
