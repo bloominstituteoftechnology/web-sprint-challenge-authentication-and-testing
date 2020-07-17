@@ -22,7 +22,7 @@ router.post('/register', (req, res) => {
                 res.status(500).json({ message: 'I need this break', err })
             })
     } else {
-        res.status(400).json({ Message: 'not valid', errors: validationResult })
+        res.status(400).json({ Message: 'not valid', errors: validateUser(user) })
     }
 });
 
