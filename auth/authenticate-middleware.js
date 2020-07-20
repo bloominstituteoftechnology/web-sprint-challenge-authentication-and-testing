@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken')
-const roles = ['normal', 'admin']
 
-function restrict(role) {
+function restrict() {
   return async (req, res, next) => {
     const authError = {
       message: 'You shall not pass!!',
@@ -16,9 +15,7 @@ function restrict(role) {
         if (err) {
           return res.status(401).json(authError)
         }
-        if (role && roles.indexOf(decoded.userRole) < roles.indexOf(role)) {
-          return res.status(401).json(authError)
-        }
+
         next()
       })
     } catch (err) {
