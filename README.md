@@ -25,12 +25,16 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+ • Sessions are local storage for auth while JST persist through requests
 
 2. What does `bcrypt` do to help us store passwords in a secure manner.
+• Uses an algorithm to read a password and then hash the password a certain number of times
 
 3. How are unit tests different from integration and end-to-end testing.
+• Has salts built in to prevent rainbow table attacks
 
 4. How _Test Driven Development_ changes the way we write applications and tests.
+• Header • Payload • Signature
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
