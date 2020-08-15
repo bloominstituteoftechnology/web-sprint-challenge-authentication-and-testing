@@ -29,13 +29,13 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
     - tokens: secret is used to create jwt to the client which is added to header in every request. server validates the token within every request 
 
 2. What does `bcrypt` do to help us store passwords in a secure manner.
-    - hashes passwords 
+    - hashes passwords to store encrypted passwords
 
 3. How are unit tests different from integration and end-to-end testing.
-    unit tests focus on smaller unit of code
+    unit tests hav salts to prevent rainbow table attacks
 
 4. How _Test Driven Development_ changes the way we write applications and tests.
-    - header, payload, signature
+    - focus on tests first which is supposed to help us write better code since we will know what will cause the test to fail
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
