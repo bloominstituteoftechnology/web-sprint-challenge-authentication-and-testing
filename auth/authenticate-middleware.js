@@ -4,5 +4,9 @@
 */
 
 module.exports = (req, res, next) => {
-  res.status(401).json({ you: 'shall not pass!' });
+  if(req.decodedJwt.role && req.decodedJwt.role === role) {
+    next();
+  } else {
+    res.status(401).json({ you: 'shall not pass!' });
+  }
 };
