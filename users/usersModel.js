@@ -14,13 +14,12 @@ async function add(user) {
 
 function find() {
     return db('users')
-        .select('id', 'username')
+        .select('id', 'username', 'password')
 };
 
 function findBy(filter) {
     return db('users')
-        .where(filter)
-        .orderBy('id');
+        .where(filter);
 };
 
 function findById(id) {
