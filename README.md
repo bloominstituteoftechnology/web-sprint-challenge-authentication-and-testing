@@ -1,5 +1,8 @@
 # Authentication and Testing Sprint Challenge
 
+git hub pull request
+https://github.com/LambdaSchool/web-sprint-challenge-authentication-and-testing/pull/6
+
 **Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**
 
 This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **Authentication and Testing**. During this sprint, you studied **authentication, JSON web tokens, unit testing, and backend testing**. In your challenge this week, you will demonstrate your mastery of these skills by creating **a dad jokes app**.
@@ -38,12 +41,12 @@ You are expected to be able to answer questions in these areas. Your responses c
 
 ### Task 1: Project Set Up
 
-- [X] Create a forked copy of this project
-- [X] Add your team lead as collaborator on Github
-- [X] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [X] Create a new branch: git checkout -b `<firstName-lastName>`.
-- [X] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [X] Push commits: git push origin `<firstName-lastName>`
+- [x] Create a forked copy of this project
+- [x] Add your team lead as collaborator on Github
+- [x] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [x] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [x] Push commits: git push origin `<firstName-lastName>`
 
 ### Task 2: Project Requirements
 
