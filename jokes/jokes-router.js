@@ -5,7 +5,7 @@ const router = require('express').Router();
 router.get('/', auth(), (req, res) => {
   const requestOptions = {
     headers: { accept: 'application/json' },
-  };
+  }
 
   axios
     .get('https://icanhazdadjoke.com/search', requestOptions)
@@ -14,7 +14,7 @@ router.get('/', auth(), (req, res) => {
     })
     .catch(err => {
       res.status(500).json({ message: 'Error Fetching Jokes', error: err });
-    });
-});
+    })
+})
 
 module.exports = router;

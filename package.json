@@ -4,9 +4,9 @@
   "description": "Authentication Sprint Challenge",
   "main": "index.js",
   "scripts": {
-    "test": "",
-    "server": "nodemon index.js",
-    "start": ""
+    "test": "cross-env DB_ENV=test jest --watch",
+    "start": "node index.js",
+    "server": "nodemon index.js"
   },
   "repository": {
     "type": "git",
