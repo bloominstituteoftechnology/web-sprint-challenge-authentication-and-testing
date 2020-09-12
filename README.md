@@ -41,7 +41,7 @@ end to end testing- testing as a system as a whole is working like with external
 
 4. How _Test Driven Development_ changes the way we write applications and tests.
 
-you write the test first then write the supporting function write a failing test - make the test pass - then refactor
+you write the test first then write the supporting function write a failing test - make the test pass - then refactor  
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
