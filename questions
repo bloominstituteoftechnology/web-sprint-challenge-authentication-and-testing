@@ -1,0 +1,19 @@
+Differences between using sessions or JSON Web Tokens for authentication.
+
+Sessions use cookies to create instances('sessions') which stores user information
+    that remains peristed until deleted. JWT store user information on  a generated token
+   
+
+
+What does bcrypt do to help us store passwords in a secure manner.
+
+bcrypt hashes passwords scarbles into secure password
+
+How are unit tests different from integration and end-to-end testing.
+
+an end-to-end test runs the entire system.
+an integration test runs just two adjoining layers of the system: the integration point.
+
+How Test Driven Development changes the way we write applications and tests.
+
+ makes you to think about the requirements before writing code

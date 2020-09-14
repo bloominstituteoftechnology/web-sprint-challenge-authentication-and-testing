@@ -4,7 +4,8 @@
   "description": "Authentication Sprint Challenge",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon --require dotenv/config index"
+    "server": "nodemon --require dotenv/config index",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -26,10 +27,12 @@
     "helmet": "^3.22.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.0",
-    "sqlite3": "^4.1.1"
+    "sqlite3": "^4.1.1",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
+    "jest": "^26.4.2",
     "nodemon": "^2.0.3"
   }
 }

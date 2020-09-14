@@ -4,7 +4,7 @@ const restrict = require('../auth/authenticate-middleware')
 
 const router = require('express').Router();
 
-router.get('/',  async (req, res, next) => {
+router.get('/', restrict() , async (req, res, next) => {
   const requestOptions = {
     headers: { accept: 'application/json' },
   };
