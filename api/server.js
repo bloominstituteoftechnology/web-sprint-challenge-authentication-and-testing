@@ -17,16 +17,16 @@ server.use('/api/jokes', authenticate, jokesRouter);
 
 module.exports = server;
 
-function checkRole(user) {
-    return (req, res, next) => {
-        if (
-            req.decodedToken &&
-            req.decodedToken.role &&
-            req.decodedToken.role.toLowerCase() === user
-        ) {
-            next()
-        } else {
-            res.status(403).json({ message: 'Must be logged in' })
-        }
-    }
-}
+// function checkRole(user) {
+//     return (req, res, next) => {
+//         if (
+//             req.decodedToken &&
+//             req.decodedToken.role &&
+//             req.decodedToken.role.toLowerCase() === user
+//         ) {
+//             next()
+//         } else {
+//             res.status(403).json({ message: 'Must be logged in' })
+//         }
+//     }
+// }

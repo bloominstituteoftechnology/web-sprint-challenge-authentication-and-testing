@@ -4,7 +4,7 @@ const restricted = require('../auth/middleware')
 
 const router = require('express').Router();
 
-router.get('/', (req, res) => {
+router.get('/', restricted(), (req, res) => {
   const requestOptions = {
     headers: { accept: 'application/json' },
   };
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/user', restricted, (req, res) => {
+router.get('/user', restricted(), (req, res) => {
   Users.find()
       .then(param => {
           res.status(200).json(param)
