@@ -11,7 +11,7 @@ afterAll(async () => {
 });
 
 describe(' integration tests', () => {
-  it(`GET /api/jokes, cant get jokes if not auth'd`, async () => {
+  it(`GET /api/jokes - can't get jokes if not auth'd`, async () => {
     const res = await supertest(server).get('/api/jokes');
     expect(res.statusCode).toBe(401);
     expect(res.type).toBe('application/json');
@@ -43,7 +43,7 @@ describe(' integration tests', () => {
     });
     expect(res.statusCode).toBe(400);
     expect(res.type).toBe('application/json');
-    expect(res.body.message).toBe('missing required parameters');
+    expect(res.body.message).toBe('missing required params');
   });
 
   it(`POST /api/auth/register - creates new user`, async () => {
@@ -58,29 +58,29 @@ describe(' integration tests', () => {
 
   it(`POST /api/auth/register - 400 err if user exists`, async () => {
     const res = await supertest(server).post('/api/auth/register').send({
-      username: 'Ben99',
+      username: 'ben99',
       password: 'password',
     });
     expect(res.statusCode).toBe(400);
     expect(res.type).toBe('application/json');
-    expect(res.body.message).toBe('username already taken');
+    expect(res.body.message).toBe('username exists');
   });
 
   it(`POST /api/auth/login - tests logging in `, async () => {
     await supertest(server).post('/api/auth/register').send({
-      username: 'Ben99',
+      username: 'Ben104',
       password: 'password',
     });
     const res = await supertest(server).post('/api/auth/login').send({
-      username: 'Ben99',
+      username: 'Ben104',
       password: 'password',
     });
     expect(res.statusCode).toBe(200);
     expect(res.type).toBe('application/json');
-    expect(res.body.message).toBe(`Welcome Ben99!`);
+    expect(res.body.message).toBe(`Welcome Ben104!`);
   });
 
-  it('POST /api/auth/login, err 401 if invalid creds', async () => {
+  it('POST /api/auth/login - err 401 if invalid creds', async () => {
     const res = await supertest(server).post('/api/auth/login').send({
       username: 'Ben99 ',
       password: 'badpass',

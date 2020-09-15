@@ -5,12 +5,12 @@ const users = require('../models/users');
 
 router.get('/users', async (req, res) => {
   const allUsers = await users.get();
-  res.status(200).json(users);
+  res.status(200).json(allUsers);
 });
 
 router.post('/register', async (req, res) => {
   if (!req.body.password || !req.body.username) {
-    res.status(400).json({ message: 'missing required parameters' });
+    res.status(400).json({ message: 'missing required params' });
   } else {
     const username = req.body.username;
     const duplicateUser = await users.getBy({ username });
