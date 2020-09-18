@@ -32,45 +32,6 @@ router.post("/register", (req, res) => {
   }
 });
 
-router.post("/login", (req, res) => {
-  const { username, password } = req.body;
 
-  if (isValid(req.body)) {
-      Users.findBy({ username: username })
-          .then(([user]) => {
-
-              if (user && bcryptjs.compareSync(password, user.password)) {
-                  const token = makeJwt(user);
-
-                  res.status(200).json({ token });
-              } else {
-                  res.status(401).json({ message: "Invalid credentials" });
-              }
-          })
-          .catch(error => {
-              res.status(500).json({ message: error.message });
-          });
-  } else {
-      res.status(400).json({
-          message: "please provide username and password and the password should be alphanumeric",
-      });
-  }
-});
-
-function makeJwt({ id, username, department }) {
-  const payload = {
-      username,
-      department,
-      subject: id,
-  };
-  const config = {
-      jwtSecret: process.env.JWT_SECRET || ":)",
-  };
-  const options = {
-      expiresIn: "8 hours",
-  };
-
-  return jwt.sign(payload, config.jwtSecret, options);
-}
 
 module.exports = router;
