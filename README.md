@@ -26,11 +26,19 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
 
+JSON Web Tokens must be explicitly produced by us, where the browser *automatically* sends cookies. JWTs are more commonly used, and fix the problems with Cross-Site Request Forgery that cookies face. JWTs send and store encoded authorization data with no associated domain, where cookies are for sending and storing arbitrary data. 
+
 2. What does `bcrypt` do to help us store passwords in a secure manner.
+
+bcryptjs is a library that allows us to hash user passwords to make them more secure. Hashing is the process of converting a given key (the password) into another value by passing it into a one-way hashing algorithm. Because it is one-way this means it can't be converted back to original value. This allows us to protect users who use the same password for many services.
 
 3. How are unit tests different from integration and end-to-end testing.
 
+Unit testing tests small parts of the system in isolation from the larger parts. It ensures that the individual parts and pieces work. Integration tests test larger groups of units, to ensure they work together as expected. And end-to-end testing tests an aspect of the system within the context of the *whole*.
+
 4. How _Test Driven Development_ changes the way we write applications and tests.
+
+Test Driven Development requires that we test the pieces of an app as we build them. It pushes developers to make sure their code *behaves* as it has to, and solves more problems than it might introduce. 
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
@@ -39,7 +47,7 @@ You are expected to be able to answer questions in these areas. Your responses c
 ### Task 1: Project Set Up
 
 - [x] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
+- [x] Add your team lead as collaborator on Github
 - [x] Clone your OWN version of the repository (Not Lambda's by mistake!)
 - [x] Create a new branch: git checkout -b `<firstName-lastName>`.
 - [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
@@ -51,8 +59,8 @@ Your finished project must include all of the following requirements:
 
 - [x] An authentication workflow with functionality for account creation and login implemented inside `/auth/auth-router.js`. A `user` has `username` and `password`. Both properties are required.
 - [x] Middleware used to restrict access to resources for non authenticated requests. Use the file: `./auth/authenticate-middleware.js` as a starting point.
-- [ ] Configuration for running tests using `Jest`.
-- [ ] A **minimum o 2 tests** per API endpoint.
+- [x] Configuration for running tests using `Jest`.
+- [x] A **minimum o 2 tests** per API endpoint.
 
 **Note**: the database already has the users table, but if you run into issues, the migrations are available.
 
