@@ -6,7 +6,7 @@ const server = require('../api/server');
 
 describe('Register User', () => {
     it ('should register users', async() => {
-        const newUser = {username: "matthew", password: "password"};
+        const newUser = {username: "gambino", password: "password"};
         const res = await request(server)
         .post("/api/auth/register")
         .send(newUser);
@@ -21,7 +21,7 @@ describe('Login User', () => {
         
         const res = await request(server)
             .post('/api/auth/login')
-            .send({ username: "matthew", password: "password" })
+            .send({ username: "gambino", password: "password" })
         expect(res.status).toBe(201)
         expect(res.body).toHaveProperty('token')
         expect(res.type).toBe('application/json')
