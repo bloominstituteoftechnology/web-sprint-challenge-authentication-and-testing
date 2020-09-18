@@ -5,9 +5,12 @@ const secret = require("../config/secrets");
 
 const router = require('express').Router();
 
+
+// 🎠 working 🎠 // 
 router.post('/register', validateUser, (req, res) => {
   const { username, password } = req.body; 
   const rounds = process.env.BCRYPT_ROUNDS || 4; 
+
   db.add({ username, password: bcrypt.hashSync(password, rounds) })
     .then(user => {
       res.status(201).json({ message: `Welcome ${username}` }); 
@@ -18,13 +21,16 @@ router.post('/register', validateUser, (req, res) => {
     })
 });
 
+
+// 🎠 working 🎠 // 
 router.post('/login', validateUser, (req, res) => {
   const { username, password } = req.body; 
+
   db.findBy(username)
     .then(user => {
       if (username && bcrypt.compareSync(password, user.password)) {
         const token = generateToken(user); 
-        res.status(200).json({ message: `Welcome back ${username}`, token }); 
+        res.status(201).json({ message: `Welcome back ${username}`, token }); 
       } else {
         res.status(403).json({ message: "Incorrect username or password" }); 
       }
@@ -39,6 +45,7 @@ router.post('/login', validateUser, (req, res) => {
 // 🎠 working 🎠 // 
 function validateUser(req, res, next){
   const { username, password } = req.body; 
+
   if (!username || !password) {
     res.status(401).json({ message: "Please provide username and password" }); 
   } else {
