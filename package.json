@@ -4,7 +4,9 @@
   "description": "Authentication Sprint Challenge",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js"
+    "test": "jest --watch",
+    "server": "nodemon index.js",
+    "start": "index.js"
   },
   "repository": {
     "type": "git",
