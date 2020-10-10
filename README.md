@@ -46,21 +46,21 @@ You are expected to be able to answer questions in these areas. Your responses c
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: git push origin `<firstName-lastName>`
+- [X] Create a forked copy of this project
+- [X] Add your team lead as collaborator on Github
+- [X] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [X] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [X] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [X] Push commits: git push origin `<firstName-lastName>`
 
 ### Task 2: Project Requirements
 
 Your finished project must include all of the following requirements:
 
-- [ ] An authentication workflow with functionality for account creation and login implemented inside `/auth/auth-router.js`. A `user` has `username` and `password`. Both properties are required.
-- [ ] Middleware used to restrict access to resources for non authenticated requests. Use the file: `./auth/authenticate-middleware.js` as a starting point.
-- [ ] Configuration for running tests using `Jest`.
-- [ ] A **minimum o 2 tests** per API endpoint.
+- [X] An authentication workflow with functionality for account creation and login implemented inside `/auth/auth-router.js`. A `user` has `username` and `password`. Both properties are required.
+- [X] Middleware used to restrict access to resources for non authenticated requests. Use the file: `./auth/authenticate-middleware.js` as a starting point.
+- [X] Configuration for running tests using `Jest`.
+- [X] A **minimum o 2 tests** per API endpoint.
 
 **Note**: the database already has the users table, but if you run into issues, the migrations are available.
 
@@ -72,13 +72,13 @@ After finishing your required elements, you can push your work further. These go
 
 - [ ] Write at least 4 tests per endpoint.
 - [ ] Extract user validation into a separate method and write unit tests for it.
-- [ ] Use a separate testing database for the endpoint tests.
-- [ ] Implement authentication with the other method, if you used JWTs for MVP use sessions for stretch and vice versa.
+- [X] Use a separate testing database for the endpoint tests.
+- [X] Implement authentication with the other method, if you used JWTs for MVP use sessions for stretch and vice versa.
 
 ## Submission format
 
 Follow these steps for completing your project.
 
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repo). **Please don't merge your own pull request**
-- [ ] Add your team lead as a reviewer on the pull-request
-- [ ] Your team lead will count the project as complete after receiving your pull-request
+- [X] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repo). **Please don't merge your own pull request**
+- [X] Add your team lead as a reviewer on the pull-request
+- [] Your team lead will count the project as complete after receiving your pull-request
