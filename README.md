@@ -28,9 +28,15 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 2. What does `bcrypt` do to help us store passwords in a secure manner.
 
+    Bcrypt "salts" and "hashes" passwords, which essentially reduces the number of passwords-by-second an attacker could "hash". 
+
 3. How are unit tests different from integration and end-to-end testing.
 
+    End-to-end tests test all layers of the application at once and require external components (i.e. a database or messaging queue), while unit tests single bits of source code like functions/calculations.
+
 4. How _Test Driven Development_ changes the way we write applications and tests.
+
+    TDD changes the way we write applications and tests by letting you write your test code before your functional code, rather than start with functional code and then proceed to test code (if you do at all).
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
