@@ -65,7 +65,7 @@ describe('server.js', () =>{
 
     //     })
     //     })
-    describe("POST /login", () => {
+    describe("LOGIN & TOKEN", () => {
 
         it("should return 200", async () => {
             await request(server)

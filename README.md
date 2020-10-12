@@ -25,7 +25,8 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
-Seesions are more antiquated while JWT have less challenges and easier to bug
+    //Seesions are more antiquated while JWT have less challenges and easier to bug
+    //Securley transmit information between parties as JSON object. 
 
 2. What does `bcrypt` do to help us store passwords in a secure manner.
     // bcrypt hashing function allows to build a password security 
