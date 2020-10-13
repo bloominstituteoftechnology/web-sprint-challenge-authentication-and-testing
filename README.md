@@ -26,6 +26,8 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
 
+    Session cookies are stored IN the server's memory, it uses a lot more resources than JSON web tokens, which are stateless.
+
 2. What does `bcrypt` do to help us store passwords in a secure manner.
 
     Bcrypt "salts" and "hashes" passwords, which essentially reduces the number of passwords-by-second an attacker could "hash". 
@@ -44,7 +46,7 @@ You are expected to be able to answer questions in these areas. Your responses c
 
 ### Task 1: Project Set Up
 
-- [X] Create a forked copy of this project
+- [ ] Create a forked copy of this project
 - [ ] Add your team lead as collaborator on Github
 - [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
 - [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
