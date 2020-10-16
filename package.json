@@ -4,6 +4,7 @@
   "description": "Authentication Sprint Challenge",
   "main": "index.js",
   "scripts": {
+    "test": "jest --watch",
     "server": "nodemon index.js"
   },
   "repository": {
@@ -31,5 +32,8 @@
     "jest": "^26.5.3",
     "nodemon": "^2.0.3",
     "supertest": "^5.0.0"
+  },
+  "jest":{
+    "testEnvironment": "node"
   }
 }
