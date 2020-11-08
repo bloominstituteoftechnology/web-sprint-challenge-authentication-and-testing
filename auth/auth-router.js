@@ -56,10 +56,13 @@ router.post('/login', (req, res) => {
 
     const token = jwt.sign({
       userID: user.id,
-      
-    })
+    }, process.env.JWT_SECRET)
 
-    req.session.user = user
+    // req.session.user = user
+
+    // save client cookie
+
+    res.cookie("token", token)
 
     res.json({
       message: `Welcome ${user.username} !!!!`
