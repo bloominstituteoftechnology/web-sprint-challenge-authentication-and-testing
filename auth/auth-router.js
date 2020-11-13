@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const bcrypt = require('bcryptjs')
-const Users = require("../users/user-model.js")
+const User = require("../users/user-model.js")
 const jwt = require("jsonwebtoken")
 const { jwtSecret } = require("../database/secret")
 
@@ -20,7 +20,7 @@ router.post('/register', async (req, res) => {
     res.status(400).json({ message: 'error' })
   } else {
     const username = req.body.username;
-    const duplicateUser = await users.getBy({ username })
+    const duplicateUser = await user.getBy({ username })
 
     if (duplicateUser.length > 0) {
       res.status(400).json({ message: 'username exists' })

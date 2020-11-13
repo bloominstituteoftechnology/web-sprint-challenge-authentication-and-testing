@@ -1,23 +1,23 @@
 const db = require('../database/dbConfig')
 
 const get = async () => {
-  return db('users')
+  return db('user')
 }
 
 const getBy = async filter => {
-  return db('users')
+  return db('user')
   .where(filter)
   .orderBy('id')
 }
 
 const getById = async id => {
-  return db('users')
+  return db('user')
   .where({ id })
   .first()
 }
 
 const create = async user => {
-  const [id] = await db('users')
+  const [id] = await db('user')
   .insert(user)
   return getById(id)
 }
