@@ -1,0 +1,19 @@
+1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+    Sessions
+
+2. What does `bcrypt` do to help us store passwords in a secure manner.
+    bcrypt has a hashing function that allows us to build a password security platform that scales with computation power and always hashes every password with a salt. For example, if a hacker was to access the store hash and tried to use it, bcrypt would then hash that value (hashing the hash), which then would not match the original hash. 
+
+    (password) a = (hash) aaa
+
+    (hash) aaa = (new hash) zzz
+
+    (new hash) zzz = (new new hash) 111 
+
+    and so on...
+
+3. How are unit tests different from integration and end-to-end testing.
+    Unit tests are tests designed to check the functionanility of individual components. It tests the responsiveness of the component (unit) - does the password match the requirements? Are all the fields filled out?
+    End-to-end testing is testing done to check the lifecycle of the entire app.  From the end-user's interaction with the app, to the calls to the backend, including, but not limited to, API calls, GET, POST, PUT and DELETE (CRUD as well).
+
+4. How _Test Driven Development_ changes the way we write applications and tests.
