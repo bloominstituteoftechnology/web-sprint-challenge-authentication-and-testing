@@ -42,7 +42,7 @@ You are expected to be able to answer questions in these areas.
 Your finished project must include all of the following requirements:
 
 - [ ] An authentication workflow with functionality for account creation and login, implemented inside `api/auth/auth-router.js`.
-- [ ] Middleware used to restrict access to resources for non authenticated requests, implemented inside `api/middleware/restricted-endpoint.js`.
+- [ ] Middleware used to restrict access to resources from non-authenticated requests, implemented inside `api/middleware/restricted-endpoint.js`.
 - [ ] A minimum of 2 tests per API endpoint, implemented inside `api/server.test.js`.
 
 **Notes:**
