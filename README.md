@@ -12,9 +12,13 @@ _You have **three hours** to complete this challenge. Plan your time accordingly
 
 ## Introduction
 
-In this challenge, you build a real wise-guy application. _Dad jokes_ are all the rage these days.
+Dad jokes are all the rage these days! In this challenge, you will build a real wise-guy application.
 
-Implement a User Authentication System. Hash the user's password using `bcryptjs` before saving the user to the database. Use JSON Web Tokens and the `jsonwebtoken` library to persist authentication across requests.
+We need users to be able to hit the `[POST] /api/auth/register` endpoint to create a new account, and the `[POST] /api/auth/login` endpoint to get a token.
+
+We also need to make sure nobody without the token can hit `[GET] /api/jokes` and gain access to our dad jokes.
+
+We will hash the user's password using `bcryptjs`, and use JSON Web Tokens and the `jsonwebtoken` library.
 
 ## Interview Questions
 
