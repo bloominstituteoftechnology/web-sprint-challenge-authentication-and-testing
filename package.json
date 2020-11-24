@@ -1,31 +1,30 @@
 {
-  "name": "nodeauth-challenge",
+  "name": "authentication-and-testing",
   "version": "1.0.0",
-  "description": "Authentication Sprint Challenge",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "migrate": "knex migrate:latest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LambdaSchool/Sprint-Challenge-Authentication.git"
+    "url": "git+https://github.com/LambdaSchool/web-sprint-challenge-authentication-and-testing.git"
   },
-  "keywords": [],
-  "author": "Lambda School",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LambdaSchool/Sprint-Challenge-Authentication/issues"
-  },
-  "homepage": "https://github.com/LambdaSchool/Sprint-Challenge-Authentication#readme",
   "dependencies": {
-    "axios": "^0.20.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "helmet": "^4.1.1",
-    "knex": "^0.21.6",
+    "helmet": "^4.2.0",
+    "knex": "^0.21.12",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.5"
+    "@types/jest": "^26.0.15",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.14.0",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
+    "supertest": "^6.0.1"
   }
 }
