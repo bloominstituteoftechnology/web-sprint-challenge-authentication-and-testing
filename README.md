@@ -52,7 +52,7 @@ Your finished project must include all of the following requirements:
 **Notes:**
 
 - The database already has the `users` table, but if you run into issues, the migrations are available.
-- Remember to check `package.json` to see which libraries need to be installed and which not.
+- Remember to check `package.json` to see which libraries need to be installed and which don't.
 - You are welcome to create additional modules for middlewares or data models, but **do not move or rename existing files** or folders.
 
 In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
