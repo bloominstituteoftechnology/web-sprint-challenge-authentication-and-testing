@@ -1,4 +1,4 @@
-// do not change this file
+// do not make changes to this file
 const jokes = [
   {
     "id": "0189hNRf2g",
