@@ -4,6 +4,7 @@ const bcryptjs = require('bcryptjs');
 
 const jwtSecret = require('../../config/secret'); 
 const UserAuth = require('./auth-model');
+const { validateCreds, usernameAvailability } = require('../middleware/middleware');
 
 //HELPERS
 const createToken = (user) => {
@@ -27,7 +28,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/register', async (req, res) => {
+router.post('/register', validateCreds, usernameAvailability, async (req, res) => {
   const newUser = req.body; 
   const rounds = process.env.BCRYPT_ROUNDS || 4;
   

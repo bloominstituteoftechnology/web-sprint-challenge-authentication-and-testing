@@ -20,7 +20,7 @@
     "express": "^4.17.1",
     "helmet": "^4.2.0",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.21.13",
+    "knex": "^0.21.14",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
