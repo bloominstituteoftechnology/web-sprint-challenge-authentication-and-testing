@@ -2,12 +2,12 @@ const router = require('express').Router();
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 const { jwtSecret } = require('../../config/secret')
+const middleware = require('../middleware/middleware')
 
 const Users = require('../jokes/jokes-model')
 const { isValid } = require('../jokes/jokes-service')
 
-
-router.post('/register', (req, res) => {
+router.post('/register', middleware.checkPayload, middleware.checkUsernameUnique, (req, res) => {
 
   const credentials = req.body;
 
@@ -30,7 +30,7 @@ router.post('/register', (req, res) => {
     }
 });
 
-    router.post('/login', (req, res) => {
+    router.post('/login', middleware.checkPayload, middleware.checkUsernameExists, (req, res) => {
       const { username, password } = req.body
 
       if (isValid(req.body)) {
