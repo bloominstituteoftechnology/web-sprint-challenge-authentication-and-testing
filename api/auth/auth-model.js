@@ -11,7 +11,8 @@ const getAll = () => {
 
 const findBy = (filter) => {
   return db('users').where(filter).first();
-}
+};
+
 module.exports = {
   addUser,
   getAll, 
