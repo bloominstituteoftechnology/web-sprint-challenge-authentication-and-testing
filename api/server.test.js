@@ -40,7 +40,24 @@ describe('endpoints', () => {
   })
   describe('[POST] /login', () => {
     it('allows the user to login', async () => {
-      const res = await request(server).post('/login')
+      await request(server).post('/api/auth/register').send(userA)
+      const res = await request(server).post('/api/auth/login').send(userA)
       expect(res.status).toBe(200)
   })
 })
+
+describe('[POST] /api/auth/login', () => {
+  beforeEach(async () => {
+    await db('users').truncate()
+    await request(server).post('/api/auth/register').send(userA)
+  })
+  it('responds with a proper status code on successful login', async () => {
+    const res = await request(server).post('/api/auth/login').send(userA)
+    expect(res.status).toBe(200)
+  }, 500)
+  it('responds with a welcome message and a token on successful login', async () => {
+    const res = await request(server).post('/api/auth/login').send(userA)
+    expect(res.body).toHaveProperty('message')
+    expect(res.body).toHaveProperty('token')
+  }, 500)
+});

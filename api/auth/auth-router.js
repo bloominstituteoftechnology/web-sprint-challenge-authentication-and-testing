@@ -20,7 +20,7 @@ router.post('/register', middleware.checkPayload, middleware.checkUsernameUnique
 
       Users.add(credentials)
         .then(user => {
-          res.status(201).json({ data: user });
+          res.status(201).json(user);
         })
         .catch(error => {
           res.status(500).json({ message: error.message })
@@ -34,7 +34,7 @@ router.post('/register', middleware.checkPayload, middleware.checkUsernameUnique
       const { username, password } = req.body
 
       if (isValid(req.body)) {
-        Users.findby({ username: username })
+        Users.findBy({ username: username })
           .then(([user]) => {
             if (user && bcryptjs.compareSync(password, user.password)) {
               const token = makeToken(user);
