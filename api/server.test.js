@@ -19,10 +19,7 @@ afterAll(async () => {
 });
 
 describe('Endpoints', () => {
-  describe('/register', () => {
-    test('sanity', () => {
-      expect(true).not.toBe(false);
-    });
+  describe('/auth/register', () => {
     it('Responds with 200 status sending new user', async () => {
       const res = await request(server)
         .post('/api/auth/register')
@@ -43,4 +40,24 @@ describe('Endpoints', () => {
       expect(res.body).toContain('username taken');
     });
   });
+  describe('/auth/login', () => {
+    beforeEach(async () => {
+      await request(server).post('/api/auth/register').send(chico);
+    });
+    it('Responds with correct error message if no user data', async () => {
+      const res = await request(server).post('/api/auth/login');
+      expect(res.body).toContain('username and password required');
+    });
+    it('Returns correct info on succesful login', async () => {
+      const res = await request(server).post('/api/auth/login').send(chico);
+      expect(res.body.token).toBeTruthy();
+      expect(res.body.message).toBe('welcome, chico');
+    });
+  });
+  describe('/jokes', () => {
+    it('Returns no data when no token provided', async () => {
+      const res = await request(server).get('/api/jokes');
+      expect(res.body).toBe('token required');
+    });
+  })
 });
