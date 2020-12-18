@@ -14,9 +14,10 @@ router.post('/register', (req, res) => {
     res.status(201).json(saved)
   })
   .catch((err) => {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: 'username taken' });
   });
 });
+ 
 
 router.post('/login', (req, res) => {
   // implement login
@@ -34,8 +35,8 @@ router.post('/login', (req, res) => {
       res.status(401).json({message: 'invalid credentials'});
     }
   })
-  .catch((error) => {
-    res.status(500).json(error)
+  .catch((err) => {
+    res.status(500).json({message:'username and password required'})
   })
 });
 
