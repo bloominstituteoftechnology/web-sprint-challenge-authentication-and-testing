@@ -2,8 +2,10 @@ const router = require('express').Router();
 const bcrypt = require("bcryptjs");
 const Users = require("./auth-model");
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
-router.post('/register', async (req, res) => {
+
+router.post('/register', async (req, res, next) => {
   // res.end('implement register, please!');
   try {
 		const { username, password} = req.body
@@ -15,7 +17,7 @@ router.post('/register', async (req, res) => {
 			})
     }
     
-    if(!username || password) {
+    if(!username || !password) {
       return res.status(409).json({
 				message: "username and password required",
 			})
@@ -58,7 +60,7 @@ router.post('/register', async (req, res) => {
   */
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res, next) => {
   // res.end('implement login, please!');
   try {
 		const { username, password } = req.body
@@ -71,22 +73,22 @@ router.post('/login', async (req, res) => {
 		const user = await Users.findBy({ username }).first()
 
     const passwordValid = await bcrypt.compare(password, user.password)
-    
 		if (!user || !passwordValid) {
 			return res.status(401).json({
 				message: "invalid credentials",
 			})
     }
-
         const token = jwt.sign({
             id: user.id,
         }, process.env.JWT_SECRET)
-        
 		res.json({
             message: `Welcome, ${user.username}!`,
             token: token
 		})
 	} catch(err) {
+
+    // console.log(req.body.username)
+    // console.log(req.body.password)
 		next(err)
 	}
   /*
