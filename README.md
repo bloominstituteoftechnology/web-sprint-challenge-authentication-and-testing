@@ -59,7 +59,6 @@ After finishing your required elements, you can push your work further. These go
 
 - [ ] Write at least 4 tests per endpoint.
 - [ ] Extract user validation into a separate method and write unit tests for it.
-- [ ] Use a separate testing database for the endpoint tests.
 - [ ] Implement authentication using sessions instead of tokens.
 
 ## Submission format
