@@ -22,11 +22,15 @@ We will hash the user's password using `bcryptjs`, and use JSON Web Tokens and t
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project.
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!).
+- [ ] Fork the project and clone it to your machine.
+- [ ] Set up your fork settings in Github to submit via Codegrade.
 - [ ] Create a new branch: `git checkout -b <firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
-- [ ] Push commits: `git push origin <firstName-lastName>`
+- [ ] Implement the project on your newly created branch, committing changes regularly.
+- [ ] Push commits regularly: `git push origin <firstName-lastName>`.
+
+  **Important:**
+
+  If you already have a fork of this project in your Github account, you _must_ delete it, re-fork and re-clone.
 
 ### Task 2: Project Requirements
 
@@ -38,8 +42,8 @@ Your finished project must include all of the following requirements (further in
 
 **Notes:**
 
-- You are welcome to create additional modules for middlewares or data models, but **do not move or rename existing files** or folders.
-- Do not alter your `package.json` file except for installing libraries. The "test" script has been added for you.
+- You are welcome to create additional files but **do not move or rename existing files** or folders.
+- Do not alter your `package.json` file except to install extra libraries. The "test" script has been added for you.
 - The database already has the `users` table, but if you run into issues, the migration is available.
 - In your solution, it is essential that you follow best practices and produce clean and professional results.
 - Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work.
@@ -58,10 +62,11 @@ After finishing your required elements, you can push your work further. These go
 
 ## Submission format
 
-There are two possible ways to submit this project to Canvas. Lambda Staff will let you know which one applies:
+Submit via Codegrade. Remember to add a query string to your Webhook's Payload URL specifying your `<firstName-lastName>` branch:
 
-1. Submitting a pull request to merge `<firstName-lastName>` branch into `main`.
-2. Setting up your fork settings on Github to submit via Codegrade by pushing commits to your `<firstName-lastName>` branch.
+```
+  https://example.com/example?branch=jane-doe
+```
 
 ## Interview Questions
 
