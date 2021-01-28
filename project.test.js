@@ -1,4 +1,3 @@
-// do not make changes to this file
 const request = require('supertest')
 const server = require('./api/server')
 const db = require('./data/dbConfig')
