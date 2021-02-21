@@ -32,12 +32,12 @@ let {username, password} = req.user;
 
 const hash = bcryptjs.hashSync(password, 10);
 
-  try{
-    const registered = await Users.createUser({username, password: hash});
+  try {
+    const registered = await Users.createUser({ username, password: hash });
+    res.status(201).send(registered);
   } catch (err) {
     res.status(500).json({message: "Another user already has this name, please try another one"})
   }
-
 });
   /*
     IMPLEMENT
