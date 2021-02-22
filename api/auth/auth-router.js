@@ -1,7 +1,31 @@
 const router = require('express').Router();
+const dbConfig = require('../../data/dbConfig');
+//imports
+const authModel = require('../../model/authModel')
 
-router.post('/register', (req, res) => {
-  res.end('implement register, please!');
+router.post('/register', async (req, res) => {
+  try{
+    const newUser = await (req.body);
+    const hash = bcrypt.hashSync(newUser.password, 12)
+    
+    newUser.Password = hash
+    await authModel.insert(newUser)
+    .then(resolve=>{
+        res.json({message: 'Welcome User',
+            newUser: newUser})
+    })
+    .catch(err=>{
+        res.status(500).json({message: `Could not register, user already exists.`})
+    })
+}
+
+catch (err){
+    next(err);
+    res.status(400).json({
+        message: `Could not register new user.`,
+        err: err
+    })
+}
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -28,8 +52,19 @@ router.post('/register', (req, res) => {
   */
 });
 
-router.post('/login', (req, res) => {
-  res.end('implement login, please!');
+router.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  let user = await authModel.getBy({username})
+  let passwordsMatch = await bcrypt.compareSync(password, user[0].password)
+  
+  if(user.length !== 0 && passwordsMatch){
+      req.session.user = user[0];
+      req.session.token = generateToken(user);
+
+      res.status(200).json(req.session)
+  }else{
+      res.status(401).json({message: `You are not authorized`})
+  }
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
