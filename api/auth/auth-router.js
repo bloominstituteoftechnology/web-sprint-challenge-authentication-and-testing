@@ -1,7 +1,10 @@
 const router = require('express').Router();
 const dbConfig = require('../../data/dbConfig');
 //imports
-const authModel = require('../../model/authModel')
+const authModel = require('../../model/authModel');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
+const secrets = require('../../config/secrets');
 
 router.post('/register', async (req, res) => {
   try{
