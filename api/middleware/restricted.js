@@ -1,11 +1,14 @@
 module.exports = function restricted(){
+
     return (req, res, next)=>{
+      console.log('this is running')
         if(req.session.user && req.session.token){
             console.log(`User Authenticated`);
             next();
         }else{
             res.status(403).json({message: `You are unauthorized`})
         }
+        next();
     }
 }
   /*

@@ -38,8 +38,8 @@ We will hash the user's password using `bcryptjs`, and use JSON Web Tokens and t
 
 Your finished project must include all of the following requirements (further instructions are found inside each file):
 
-- [ ] An authentication workflow with functionality for account creation and login, implemented inside `./api/auth/auth-router.js`.
-- [ ] Middleware used to restrict access to resources from non-authenticated requests, implemented inside `./api/middleware/restricted.js`.
+- [x] An authentication workflow with functionality for account creation and login, implemented inside `./api/auth/auth-router.js`.
+- [x] Middleware used to restrict access to resources from non-authenticated requests, implemented inside `./api/middleware/restricted.js`.
 - [ ] A minimum of 2 tests per API endpoint, implemented inside `./api/server.test.js`. The `package.json` includes the "test" script.
 
 **Notes:**
@@ -59,7 +59,7 @@ After finishing your required elements, you can push your work further. These go
 
 - [ ] Write at least 4 tests per endpoint.
 - [ ] Extract user validation into a separate method and write unit tests for it.
-- [ ] Implement authentication using sessions instead of tokens.
+- [x] Implement authentication using sessions instead of tokens.
 
 ## Submission format
 
