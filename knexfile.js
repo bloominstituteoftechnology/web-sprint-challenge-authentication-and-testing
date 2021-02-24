@@ -12,6 +12,8 @@ module.exports = {
     connection: { filename: './data/auth.db3' },
     seeds: { directory: './data/seeds' },
   },
+
+    //npx knex migrate:latest --env testing
   testing: {
     ...sharedConfig,
     connection: { filename: './data/test.db3' },

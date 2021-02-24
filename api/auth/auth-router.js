@@ -50,7 +50,6 @@ catch (err){
     
     res.status(400).json({
         message: `Could not register new user.`,
-        err: err
     });
 }
 
@@ -67,7 +66,7 @@ router.post('/login', async (req, res, next )=>{
 
       res.status(200).json(req.session)
   }else{
-      res.status(401).json({message: `You are not authorized`})
+      res.status(401).json({message: `You are not authorized.`})
   }
   /*
     IMPLEMENT
