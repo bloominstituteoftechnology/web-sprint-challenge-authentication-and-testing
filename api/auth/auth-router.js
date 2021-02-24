@@ -58,25 +58,17 @@ catch (err){
 
 router.post('/login', async (req, res, next )=>{
     
-  const { username, password } = req.body;
+  let { username, password } = req.body;
   let user = await authModel.getBy(username)
-  
-  .then(resolved=>{
-    if(user.length !== 0 && bcrypt.compareSync(password, user[0].password)){
-      req.session.user = user;
-      req.session.token = generateToken(user);
+  // await console.log(user)
+  if(user.length !== 0 && bcrypt.compareSync(password, user[0].password)){
+      req.session.user = user[0];
+      req.session.token = await generateToken(user);
 
       res.status(200).json(req.session)
-    }else{
-        res.status(401).json({message: `You are not authorized.`})
-    }
-  })
-  .catch(err=>{
-    res.status(401).json({message: `You are not authorized.`})
-  })
-
-
-
+  }else{
+      res.status(401).json({message: `You are not authorized`})
+  }
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -118,11 +110,10 @@ router.post('/login', async (req, res, next )=>{
       
 
 //Token Generator
-function generateToken(user) {
+async function generateToken(user) {
   const payload = {
     subject: user.id, // sub in payload is what the token is about
     username: user.username,
-    department: user.department
     // ...otherData
   };
 
@@ -131,7 +122,7 @@ function generateToken(user) {
   };
 
   // extract the secret away so it can be required and used where needed
-  return jwt.sign(payload, secrets.jwtSecret, options); // this method is synchronous
+  return await jwt.sign(payload, secrets.jwtSecret, options); // this method is synchronous
 }
 // router.post('/login', async (req, res, next)=>{
   
