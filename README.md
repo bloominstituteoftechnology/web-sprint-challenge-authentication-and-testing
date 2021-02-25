@@ -36,12 +36,13 @@ For a step-by-step on setting up Codegrade see [this guide.](https://www.notion.
 
 Your finished project must include all of the following requirements (further instructions are found inside each file):
 
-- [ ] An authentication workflow with functionality for account creation and login, implemented inside `./api/auth/auth-router.js`.
-- [ ] Middleware used to restrict access to resources from non-authenticated requests, implemented inside `./api/middleware/restricted.js`.
-- [ ] A minimum of 2 tests per API endpoint, implemented inside `./api/server.test.js`. The `package.json` includes the "test" script.
+- [ ] An authentication workflow with functionality for account creation and login, implemented inside `api/auth/auth-router.js`.
+- [ ] Middleware used to restrict access to resources from non-authenticated requests, implemented inside `api/middleware/restricted.js`.
+- [ ] A minimum of 2 tests per API endpoint, written inside `api/server.test.js`.
 
 **Notes:**
 
+- Execute all tests locally (Codegrade's and your own) by running `npm test`.
 - You are welcome to create additional files but **do not move or rename existing files** or folders.
 - Do not alter your `package.json` file except to install extra libraries. The "test" script has been added for you.
 - The database already has the `users` table, but if you run into issues, the migration is available.
