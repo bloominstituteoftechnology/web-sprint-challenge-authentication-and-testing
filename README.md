@@ -52,13 +52,13 @@ Your finished project must include all of the following requirements (further in
 
 ### Task 3: Stretch Goals
 
-**IMPORTANT:** Work on stretch goals in a **new branch**. You can branch off `<firstName-lastName>` by executing `git checkout -b stretch`.
+**IMPORTANT:** Don't break MVP by working on stretch goals! Run `npm test` and keep an eye on your tests.
 
 After finishing your required elements, you can push your work further. These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on the following optional goals:
 
 - [ ] Write at least 4 tests per endpoint.
 - [ ] Extract user validation into a separate method and write unit tests for it.
-- [ ] Implement authentication using sessions instead of tokens.
+- [ ] Implement authentication using sessions instead of tokens. Build separate auth endpoints & middleware for this to avoid breaking tests.
 
 ## Submission format
 
