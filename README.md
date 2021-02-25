@@ -4,9 +4,11 @@
 
 This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **Authentication and Testing**. During this sprint, you studied **authentication, JSON web tokens, unit testing, and backend testing**. In your challenge this week, you will demonstrate your mastery of these skills by creating **a dad jokes app**.
 
-This is an individual assessment. All work must be your own. Your challenge score is a measure of your ability to work independently using the material covered through this sprint. You need to demonstrate proficiency in the concepts and objectives introduced and practiced in preceding days.
+This is an individual assessment. All work must be your own. All projects will be submitted to Codegrade for automated review. You will also be given feedback by code reviewers on Monday following the challenge submission. For more information on the review process [click here.](https://www.notion.so/lambdaschool/How-to-View-Feedback-in-CodeGrade-c5147cee220c4044a25de28bcb6bb54a)
 
-You are not allowed to collaborate during the sprint challenge. However, you are encouraged to follow the twenty-minute rule.
+You are not allowed to collaborate during the sprint challenge. However, you are encouraged to follow the twenty-minute rule and seek support by dropping a :wave: in your help channel should a blocker arise.
+
+_Sprint challenges open at Midnight PST on Thursday and close at 5pm PST on Friday. You will receive feedback on what you have submitted by 5pm. No retakes will be accepted._
 
 ## Introduction
 
@@ -22,17 +24,13 @@ We will hash the user's password using `bcryptjs`, and use JSON Web Tokens and t
 
 ### Task 1: Project Set Up
 
-- [ ] Fork the project and clone it to your machine.
-- [ ] Set up your fork settings in Github to submit via Codegrade.
-- [ ] Create a new branch: `git checkout -b <firstName-lastName>`.
-- [ ] Implement the project on your newly created branch, committing changes regularly.
-- [ ] Push commits regularly: `git push origin <firstName-lastName>`.
-- [ ] Run the tests inside `./api/server.test.js` locally by executing `npm test`.
-- [ ] Run the Codegrade tests locally by executing `npm run codegrade`.
+- [ ] Fork and clone the repo. Delete your old fork from Github first if you are repeating this Unit.
+- [ ] Open the assignment in Canvas and click on the "Set up git" option.
+- [ ] Follow instructions to set up Codegrade's Webhook and Deploy Key.
+- [ ] Push your first commit: `git commit --allow-empty -m "first commit" && git push`.
+- [ ] Check to see that Codegrade has accepted your git submission.
 
-  **Important:**
-
-  If you already have a fork of this project in your Github account, you _must_ delete it, re-fork and re-clone.
+For a step-by-step on setting up Codegrade see [this guide.](https://www.notion.so/lambdaschool/Submitting-an-assignment-via-Code-Grade-A-Step-by-Step-Walkthrough-07bd65f5f8364e709ecb5064735ce374)
 
 ### Task 2: Project Requirements
 
@@ -63,11 +61,12 @@ After finishing your required elements, you can push your work further. These go
 
 ## Submission format
 
-Submit via Codegrade. Remember to add a query string to your Webhook's Payload URL specifying your `<firstName-lastName>` branch:
-
-```
-  https://example.com/example?branch=jane-doe
-```
+- [ ] Submit via Codegrade by committing and pushing any new changes.
+- [ ] Create a pull request to merge `<firstName-lastName>` branch into `main`.
+- [ ] Please don't merge your own pull request and make sure **you are on your own repo**.
+- [ ] Check Codegrade for automated feedback.
+- [ ] Check Codegrade on Monday following the Sprint Challenge for reviewer feedback.
+- [ ] Any changes pushed after the deadline will not receive any feedback.
 
 ## Interview Questions
 
