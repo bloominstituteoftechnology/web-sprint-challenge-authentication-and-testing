@@ -1,9 +1,53 @@
 const router = require('express').Router();
 
-router.post('/register', (req, res) => {
-  res.end('implement register, please!');
-  /*
-    IMPLEMENT
+const bcrypt = require('bcryptjs');
+
+const jwt = require('jsonwebtoken');
+
+
+
+const User = require('../users/users-model.js');
+
+
+
+const { jwtSecret } = require('../../config/secrets');
+
+
+
+// middlewares?
+
+const validateRegister = require('../middleware/validateRegister');
+
+const validateLogin = require('../middleware/validateLogin');
+
+
+
+router.post('/register', validateRegister, async (req, res) => {
+
+	res.end('implement register, please!');
+
+	console.log('register endpoint');
+
+	const rounds = process.env.BCRYPT_ROUNDS || 10;
+
+	const hash = bcrypt.hashSync(req.user.password, rounds);
+
+	req.user.password = hash;
+
+	try {
+
+		const user = await User.add(req.user);
+
+		res.status(201).json(user);
+
+	} catch (err) {
+
+		console.log(err.message);
+
+		res.status(500).json('500 server error');
+
+	}
+    /* IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
 
     1- In order to register a new account the client must provide `username` and `password`:
@@ -28,8 +72,33 @@ router.post('/register', (req, res) => {
   */
 });
 
-router.post('/login', (req, res) => {
-  res.end('implement login, please!');
+router.post('/login', validateLogin, async (req, res) => {
+
+	res.end('implement login, please!');
+
+	console.log('login endpoint');
+
+	try {
+
+		const user = await User.findBy(req.user.username);
+
+		if (user && bcrypt.compareSync(req.user.password, user.password)) {
+
+			const token = makeToken(user);
+
+			res
+
+				.status(200)
+
+				.json({ message: `welcome ${user.username}`, token: token });
+
+		} else res.status(401).json('invalid credentials');
+
+	} catch (err) {
+
+		console.log(err.message);
+
+		res.status(500).json('500 server error');
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
