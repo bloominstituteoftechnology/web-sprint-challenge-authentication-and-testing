@@ -1,7 +1,27 @@
 const router = require('express').Router();
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const db = require('../../data/dbConfig.js');
+
+
+
+const Users = require('./usersModel.js');
+const secrets = require('./secrets.js');
+
 
 router.post('/register', (req, res) => {
-  res.end('implement register, please!');
+  let user = req.body;
+  const rounds = process.env.HASH_ROUNDS || 14;
+  const hash = bcrypt.hashSync(user.password, rounds);
+  user.password = hash;
+
+  Users.add(user)
+    .then(newUser => {
+      res.status(201).json(newUser);
+    })
+    .catch(err => {
+      res.status(500).json({ errorMessage: err.message })
+    })
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -29,7 +49,33 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  res.end('implement login, please!');
+  let { username, password } = req.body;
+
+  Users.findBy({ username })
+    .then(([user]) => {
+      if (user && bcrypt.compareSync(password, user.password)) {
+        const token = generateToken(user);
+        res.status(200).json({ message: "Welcome!", token });
+      } else {
+        res.status(401).json({ message: "You shall not pass!" });
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json({ errorMessage: error.message });
+    });
+
+    function generateToken(user) {
+      const payload = {
+        userId: user.userId,
+        username: user.username,
+      };
+      const secret = secrets.jwtSecret;
+      const options = {
+        expiresIn: "5d",
+      };
+      return jwt.sign(payload, secret, options);
+    }
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
