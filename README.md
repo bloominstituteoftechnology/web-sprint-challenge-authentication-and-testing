@@ -60,20 +60,31 @@ After finishing your required elements, you can push your work further. These go
 - [ ] Extract user validation into a separate method and write unit tests for it.
 - [ ] Implement authentication using sessions instead of tokens. Build separate auth endpoints & middleware for this to avoid breaking tests.
 
-## Submission format
+## Submission format ✅✅
 
-- [ ] Submit via Codegrade by committing and pushing any new changes.
-- [ ] Create a pull request to merge `<firstName-lastName>` branch into `main`.
-- [ ] Please don't merge your own pull request and make sure **you are on your own repo**.
-- [ ] Check Codegrade for automated feedback.
-- [ ] Check Codegrade on Monday following the Sprint Challenge for reviewer feedback.
-- [ ] Any changes pushed after the deadline will not receive any feedback.
+- [✅] Submit via Codegrade by committing and pushing any new changes.
+- [✅] Create a pull request to merge `<firstName-lastName>` branch into `main`.
+- [✅] Please don't merge your own pull request and make sure **you are on your own repo**.
+- [✅] Check Codegrade for automated feedback.
+- [✅] Check Codegrade on Monday following the Sprint Challenge for reviewer feedback.
+- [✅] Any changes pushed after the deadline will not receive any feedback.
 
-## Interview Questions
+## Interview Questions ✅✅
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics.
 
-1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication
+
+### JWT allow for validation w/o need of shared state (better security) while sessions require shared state to validate/authenticate.
+
 2. What does `bcryptjs` do to help us store passwords in a secure manner?
+
+### Puts a safeguard in place by hashing and validating passwords for us without having to save user's passwords as strings in our databases which would not be secure.
+
 3. How are unit tests different from integration and end-to-end testing?
+
+### Unit tests are more pure forms of testing where there is a pure return from a value going in and returning another. Integration testing is more testing the functionality between different areas of the code without any outside references. End-to-end is like integration but with external resources and can test the whole site.
+
 4. How does _Test Driven Development_ change the way we write applications and tests?
+
+### TDD is creating a functional test that expects a passing outcome before the code is written. This allows for developmental accountability and will make sure all specifications are being met without over engineering.
