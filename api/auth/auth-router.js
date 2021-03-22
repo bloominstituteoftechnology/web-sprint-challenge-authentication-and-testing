@@ -76,7 +76,7 @@ router.post("/login", (req, res) => {
           {
             userID: user.id,
           },
-          process.env.JWT_SECRET
+          process.env.JWT_VERIFY
         );
         res.status(200).json({
           message: `Welcome ${user.username}`,
