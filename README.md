@@ -43,6 +43,8 @@ Your finished project must include all of the following requirements (further in
 **Notes:**
 
 - Execute all tests locally (Codegrade's and your own) by running `npm test`.
+- Do not exceed 2^8 rounds of hashing with `bcryptjs`.
+- If you use environment variables make sure to provide fallbacks in the code (e.g. `process.env.SECRET || "shh"`).
 - You are welcome to create additional files but **do not move or rename existing files** or folders.
 - Do not alter your `package.json` file except to install extra libraries. The "test" script has been added for you.
 - The database already has the `users` table, but if you run into issues, the migration is available.
@@ -54,7 +56,7 @@ Your finished project must include all of the following requirements (further in
 
 **IMPORTANT:** Don't break MVP by working on stretch goals! Run `npm test` and keep an eye on your tests.
 
-After finishing your required elements, you can push your work further. These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on the following optional goals:
+These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on the following optional goals:
 
 - [ ] Write at least 4 tests per endpoint.
 - [ ] Extract user validation into a separate method and write unit tests for it.
