@@ -1,32 +1,31 @@
 const router = require('express').Router();
-const bcrypt = require('bcryptjs');
+const bcryptjs = require('bcryptjs');
 const db = require('../../data/dbConfig')
 const makeToken = require('../middleware/token')
-const isValid = require('../auth/isValid')
 
 
-router.post('/register', (req, res, next) => {
-  const credential = req.body
-  
- 
 
-  if(isValid(credentials)) {
+router.post('/register', (req, res) => {
+  const user = req.body
+  if(isValid(user)) {
     const rounds = process.env.BCRYPT_ROUNDS || 8;
-    const hash = bcrypt.hashSync(credential.password, rounds )
+    const hash = bcryptjs.hashSync(user.password, rounds )
 
-    credentials.password = hash
+    user.password = hash;
 
-    return db(credentials).insert(credential)
-      .then(credential => {
+    return db('users').insert(user)
+      .then(user => {
         res.status(201).json({data: user})
       })
       .catch(err => {
-        res.status(500).json({message: "username and password required"});
+        res.status(500).json({message: err.message});
       })
   } else {
     res.status(400).json({message:"username taken" })
   }
-  
+  function isValid(user){
+    return Boolean(user.username && user.password && typeof user.password === "string");
+}
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -74,7 +73,11 @@ router.post('/login', async (req, res, next) => {
     res.status(400).json({
       message: "Username and password required"
     })
-  } 
+    
+  }
+  function isValid(user){
+    return Boolean(user.username && user.password && typeof user.password === "string");
+} 
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
