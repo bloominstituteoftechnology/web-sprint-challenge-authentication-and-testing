@@ -1,0 +1,11 @@
+1.  Differences between using sessions or JSON Web Tokens for authentication.
+Sessions are stored on the server side and the client info is sent in a cookie to the client. JWT are stored in an encrypted token that is sent to the client and they are resposible for identifying themselves by presenting the token.
+
+2.  What does bcryptjs do to help us store passwords in a secure manner?
+bcryptjs encrypts passwords using hashes so the original password cannot be seen in the database.
+
+3.  How are unit tests different from integration and end-to-end testing?
+Unit tests are testing individual tests, integration is where tests check to see how things run with the rest of the code. End-to-end is testing interaction from the client side.
+
+4.  How does Test Driven Development change the way we write applications and tests?
+We write the tests first so that we can have fast feedback on the code we are writing. This can prevent a lot of errors.

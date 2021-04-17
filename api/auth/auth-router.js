@@ -1,7 +1,10 @@
 const router = require('express').Router();
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+const JWT_SECRET = require('../../secrets.js').JWT_SECRET
+const users = require('./model.js')
 
-router.post('/register', (req, res) => {
-  res.end('implement register, please!');
+router.post('/register', async (req, res) => {
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -27,10 +30,55 @@ router.post('/register', (req, res) => {
     4- On FAILED registration due to the `username` being taken,
       the response body should include a string exactly as follows: "username taken".
   */
+  if (!req.body.username || !req.body.password) {
+    res.status(400).json({ message: 'username and password required' })
+  } else {
+    try {
+      let foundUser = await users.findByUsername(req.body.username)
+      if (foundUser != null) {
+        res.status(400).json({ message: 'username taken' })
+      } else {
+        let encryptedPassword = bcrypt.hashSync(req.body.password, 8)
+        await users.addUser({ username: req.body.username, password: encryptedPassword })
+        const createdUser = await users.findByUsername(req.body.username)
+        res.status(201).json(createdUser)
+      }
+    } catch (err) {
+      console.log(err)
+      res.status(500).json({ message: 'error registering account' })
+    }
+  }
 });
 
-router.post('/login', (req, res) => {
-  res.end('implement login, please!');
+router.post('/login', async (req, res) => {
+  if (!req.body.username || !req.body.password) {
+    res.status(400).json({ message: 'username and password required' })
+  } else {
+    try {
+      const foundUser = await users.findByUsername(req.body.username)
+      if (foundUser != null) {
+        let correctPass = bcrypt.compareSync(req.body.password, foundUser.password) 
+        console.log(correctPass)
+        if (correctPass) {
+          jwt.sign({ username: foundUser.username }, JWT_SECRET, (err, token) => {
+            if (err) {
+              res.status(500).json({ message: 'error trying to login' })
+              console.log(err)
+            } else {
+              res.status(200).json({ message: `welcome, ${foundUser.username}`, token })
+            }
+          })
+        } else {
+          res.status(400).json({ message: 'invalid credentials' })
+        }
+      } else {
+        res.status(400).json({ message: 'invalid credentials' })
+      }
+    } catch (err) {
+      console.log(err)
+      res.status(500).json({ message: 'login error' })
+    }
+  }
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
