@@ -82,4 +82,4 @@ allows hashing
 3. How are unit tests different from integration and end-to-end testing?
 unit tests are for specific functions while integration(end to end) tests how thoe functions work together
 4. How does _Test Driven Development_ change the way we write applications and tests?
-we write tests before our product code to make sure evrything works when the right data is inserted later
+we write tests before our product code to make sure evrything works when the right data is inserted later.....
