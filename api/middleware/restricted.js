@@ -1,14 +1,34 @@
-module.exports = (req, res, next) => {
-  next();
-  /*
-    IMPLEMENT
+const jwt = require('jsonwebtoken');
 
-    1- On valid token in the Authorization header, call next.
+function restrict(){
+  return async (req, res, next) => {
+    try{
+      const token = req.cookies.token;
 
-    2- On missing token in the Authorization header,
-      the response body should include a string exactly as follows: "token required".
+      if(!token){
+        return res.status(401).json({
+          message: "Wrong Creds"
+        })
+      }
 
-    3- On invalid or expired token in the Authorization header,
-      the response body should include a string exactly as follows: "token invalid".
-  */
-};
+      jwt.verify(token, process.env.TOKEN, (err, decoded) => {
+        if(err){
+          return res.status(401).json({
+            message: "Wrong Creds"
+          })
+        }
+
+        req.token = decoded;
+
+        next()
+      })
+    } catch(error){
+      console.log(error);
+    }
+  };
+  
+}
+
+module.exports = {
+  restrict
+}

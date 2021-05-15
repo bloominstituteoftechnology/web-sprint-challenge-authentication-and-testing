@@ -1,5 +1,5 @@
   
-const db = require('../database/dbConfig');
+const db = require('../data/database/dbConfig');
 
 function getUserBy(filter){
     return db('users').select(

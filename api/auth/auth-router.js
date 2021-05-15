@@ -3,7 +3,7 @@ const router = require('express').Router();
 const auth = require('./auth-model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const {restrict} = require('./authenticate-middleware');
+const {restrict} = require('./middleware/restricted.js');
 
 router.post('/register', async (req, res) => {
   try{
