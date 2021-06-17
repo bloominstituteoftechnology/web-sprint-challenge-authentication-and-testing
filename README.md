@@ -28,7 +28,7 @@ We also need to make sure nobody without the token can call `[GET] /api/jokes` a
 
 We will hash the user's password using `bcryptjs`, and use JSON Web Tokens and the `jsonwebtoken` library.
 
-### Task 1: MVP
+### MVP
 
 Your finished project must include all of the following requirements (further instructions are found inside each file):
 
@@ -36,7 +36,7 @@ Your finished project must include all of the following requirements (further in
 - [ ] Middleware used to restrict access to resources from non-authenticated requests, implemented inside `api/middleware/restricted.js`.
 - [ ] A minimum of 2 tests per API endpoint, written inside `api/server.test.js`.
 
-**Notes:**
+**IMPORTANT Notes:**
 
 - Execute tests locally by running `npm test`.
 - Do not exceed 2^8 rounds of hashing with `bcryptjs`.
@@ -48,23 +48,13 @@ Your finished project must include all of the following requirements (further in
 - Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work.
 - It is better to submit a challenge that meets MVP than one that attempts too much and does not.
 
-### Task 2: Stretch Goals
-
-**IMPORTANT:** Don't break MVP by working on stretch goals! Run `npm test` and keep an eye on your tests.
-
-These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on the following optional goals:
-
-- [ ] Write at least 4 tests per endpoint.
-- [ ] Extract user validation into a separate method and write unit tests for it.
-- [ ] Implement authentication using sessions instead of tokens. Build separate auth endpoints & middleware for this to avoid breaking tests.
-
 ## Submission format
 
 - [ ] Submit via Codegrade by committing and pushing any new changes.
 - [ ] Create a pull request to merge `<firstName-lastName>` branch into `main`.
 - [ ] Please don't merge your own pull request and make sure **you are on your own repo**.
 - [ ] Check Codegrade for automated feedback.
-- [ ] Check Codegrade on Monday following the Sprint Challenge for reviewer feedback.
+- [ ] Check Codegrade on the days following the Sprint Challenge for reviewer feedback.
 - [ ] Any changes pushed after the deadline will not receive any feedback.
 
 ## Interview Questions
