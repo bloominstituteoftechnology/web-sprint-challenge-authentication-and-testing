@@ -41,12 +41,12 @@ const checkPayload = (req, res, next) => {
 const checkUsernameExists = async (req, res, next) => {
     try {
         const username = req.body.username;
-        const user = await Users.findByUserName(username).first()
+        const user = await Users.findByUserName(username)
 
         if (!user) {
-            return res.status(401).json({
-                message: "invalid credentials",
-            })
+            return res.status(401).send({
+              message: "invalid credentials",
+          })
         }
 
         const passwordValid = await bcrypt.compare(req.body.password, user.password)
