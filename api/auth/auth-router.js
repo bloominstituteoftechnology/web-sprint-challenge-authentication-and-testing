@@ -87,7 +87,9 @@ Users.findByUserName({ username })
       res.status(401).json({ message: 'Invalid Credentials' });
     }
   })
-  .catch(next);
+  .catch((err) => {
+    res.status(500).json(err)
+  });
 
 
   /*
