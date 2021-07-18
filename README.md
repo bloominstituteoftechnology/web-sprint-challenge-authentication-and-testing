@@ -15,7 +15,7 @@ You are not allowed to collaborate during the sprint challenge.
 - [x ] Follow instructions to set up Codegrade's Webhook and Deploy Key.
 - [x ] Make a commit and push it to Github.
 - [x ] Check to see that Codegrade has accepted your git submission.
-Why won't my codegrade webhook work?
+
 For a step-by-step on setting up Codegrade see [this guide.](https://www.notion.so/lambdaschool/Submitting-an-assignment-via-Code-Grade-A-Step-by-Step-Walkthrough-07bd65f5f8364e709ecb5064735ce374)
 
 ## Project Instructions
@@ -60,7 +60,13 @@ Your finished project must include all of the following requirements (further in
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics.
 
-1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
-2. What does `bcryptjs` do to help us store passwords in a secure manner?
-3. How are unit tests different from integration and end-to-end testing?
-4. How does _Test Driven Development_ change the way we write applications and tests?
+1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication. 
+In the session based authentication, the server will create a session for the user after the user logs in. The session id is then stored on a cookie on the user’s browser. While the user stays logged in, the cookie would be sent along with every subsequent request. The server can then compare the session id stored on the cookie against the session information stored in the memory to verify user’s identity and sends response with the corresponding state! In the token based application, the server creates JWT with a secret and sends the JWT to the client. The client stores the JWT (usually in local storage) and includes JWT in the header with every request. The server would then validate the JWT with every request from the client and sends response.
+(source: https://sherryhsu.medium.com/session-vs-token-based-authentication-11a6c5ac45e4) *** I was unsure how to answer this, so had to do some research (see the above citation) to make sure I had a better understanding, and to put here in my notes for future reference.
+
+2. What does `bcryptjs` do to help us store passwords in a secure manner? - it hashes the passwords, making it more difficult to use
+    brute force to decode the password.
+
+3. How are unit tests different from integration and end-to-end testing? - unit tests test individual pieces of code (a single function), whereas integration tests how whole parts of the code are working together, whereas end-to-end is testing the fluidity and accuracy in how the webapp runs as though a user were using it.
+
+4. How does _Test Driven Development_ change the way we write applications and tests? - writing the tests first, seeing them fail, and then building our code to watch the tests pass, makes sure that the code we write is working as we go. Leading to less bugs, saving us time in debugging later on, and creates code that is easier to go back and change or be changed by other developers.
