@@ -33,6 +33,7 @@ router.post('/register', checkPayload, checkForDuplicates, (req, res) => {
 
   Users.add(user)
     .then(saved => {
+      console.log("saved: ", saved)
       res.status(201).json(saved);
     })
     .catch(err => {

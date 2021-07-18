@@ -7,7 +7,7 @@ const checkForDuplicates = async (req, res, next) => {
     try {
       console.log("in the try")
         const username = req.body.username;
-        const user = await Users.findByUserName(username).first()
+        const user = await Users.findByUserName(username)
         if (user) {
             return res.status(400).json({
                 message: "Username is already taken. Please use another username.",

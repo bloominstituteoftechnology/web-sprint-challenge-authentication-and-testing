@@ -11,14 +11,16 @@ function findUsers() {
 
 function findByUserName(username) {
     return db("users")
+        .select("*")
         .where("username", username)
-        .select("*").first()
+        .first()
 }
 
 function findByUserId(id) {
     return db("users as u")
+        .select("*")
         .where("id", id)
-        .select("*").first()
+        .first()
 }
 
 
