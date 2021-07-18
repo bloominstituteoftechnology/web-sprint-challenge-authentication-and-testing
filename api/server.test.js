@@ -23,12 +23,7 @@ test('sanity', () => {
 
 // ACT
 describe("user tests", () => {
-  // it("checks that both username and password are provided when registering", async () => {
-  //   const res = await supertest(server).post("/api/auth/register").send({ username: 'testUser' })
-  //   expect(res.statusCode).toBe(400)
-  //   expect(res.type).toBe("application/json")
-  //   expect(res.body.message).toBe("username and password required")
-  // })
+
 
   it("registers a new user", async () => {
     const res = await supertest(server).post("/api/auth/register").send({ username: 'testUser', password: 'testPassword' })
@@ -36,6 +31,7 @@ describe("user tests", () => {
     expect(res.body.id).toBe(1)
     expect(res.body.username).toBe("testUser")
   })
+
 
   it("checks that the username is unique before registering", async () => {
     const res = await supertest(server).post("/api/auth/register").send({ username: 'uniqueUsername', password: 'testPassword' })
@@ -49,7 +45,10 @@ describe("user tests", () => {
     expect(res2.body.message).toBe("Username is already taken. Please use another username.")
   })
 
-  it("checks that the user already exists before logging in", async () => {
+
+  it("checks that the user already exists before logging in", 
+  
+  async () => {
     const res = await supertest(server).post("/api/auth/register").send({ username: 'testUser', password: 'testPassword' })
     expect(res.statusCode).toBe(201)
     expect(res.body.id).toBe(1)
@@ -62,7 +61,10 @@ describe("user tests", () => {
 
   })
 
-  it("checks that an existing user is successfully logged in", async () => {
+
+  it("checks that an existing user is successfully logged in", 
+  
+  async () => {
     const res = await supertest(server).post("/api/auth/register").send({ username: 'testUser', password: 'testPassword' })
     expect(res.statusCode).toBe(201)
     expect(res.body.id).toBe(1)

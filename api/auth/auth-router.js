@@ -20,8 +20,6 @@ module.exports = {
 
 router.post('/register', checkPayload, checkForDuplicates, (req, res) => {
 
-  // MY CODE STARTS HERE
-
   let user = req.body;
 
   // bcrypting the password before saving
@@ -41,8 +39,8 @@ router.post('/register', checkPayload, checkForDuplicates, (req, res) => {
         message: `Error: ${err}`
       })
     }); 
-  // MY CODE ENDS HERE
 
+});
 
   /*
     IMPLEMENT
@@ -69,10 +67,9 @@ router.post('/register', checkPayload, checkForDuplicates, (req, res) => {
     4- On FAILED registration due to the `username` being taken,
       the response body should include a string exactly as follows: "username taken".
   */
-});
 
 router.post('/login', checkPayload, checkUsernameExists, (req, res) => {
-//   res.end('implement login, please!');
+
 console.log("starting /login");
 let { username, password } = req.body;
 console.log("username: ", username)
@@ -96,6 +93,7 @@ Users.findByUserName(username)
     res.status(500).json(err)
   });
 
+});
 
   /*
     IMPLEMENT
@@ -120,7 +118,6 @@ Users.findByUserName(username)
     4- On FAILED login due to `username` not existing in the db, or `password` being incorrect,
       the response body should include a string exactly as follows: "invalid credentials".
   */
-});
 
 function makeToken(user){
   const payload = {
