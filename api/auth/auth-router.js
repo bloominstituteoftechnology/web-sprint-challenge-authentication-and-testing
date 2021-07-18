@@ -18,7 +18,7 @@ module.exports = {
 }
 */
 
-router.post('/register', checkForDuplicates, checkPayload, checkUsernameExists, (req, res) => {
+router.post('/register', checkForDuplicates, checkPayload, (req, res) => {
   // res.end('implement register, please!');
 
   // MY CODE STARTS HERE
