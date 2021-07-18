@@ -13,28 +13,32 @@ module.exports = {
 }
 */
 
-// router.post('/register', (req, res) => {
-//   // res.end('implement register, please!');
+router.post('/register', (req, res) => {
+  // res.end('implement register, please!');
 
-//   // MY CODE STARTS HERE
+  // MY CODE STARTS HERE
 
-//   let user = req.body;
+  let user = req.body;
 
-//   // bcrypting the password before saving
-//   const rounds = process.env.BCRYPT_ROUNDS || 8; // 2 ^ 8
-//   const hash = bcrypt.hashSync(user.password, rounds);
+  // bcrypting the password before saving
+  const rounds = process.env.BCRYPT_ROUNDS || 8; // 2 ^ 8
+  const hash = bcrypt.hashSync(user.password, rounds);
 
-//   // never save the plain text password in the db
-//   user.password = hash
+  // never save the plain text password in the db
+  user.password = hash
 
-//   Users.add(user)
-//     .then(saved => {
-//       res.status(201).json({
-//         message: `Great to have you, ${saved.username}`,
-//       });
-//     })
-//     .catch(next); 
-//   // MY CODE ENDS HERE
+  Users.add(user)
+    .then(saved => {
+      res.status(201).json({
+        message: `Great to have you, ${saved.username}`,
+      });
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: `Error: ${err}`
+      })
+    }); 
+  // MY CODE ENDS HERE
 
 
   /*
@@ -62,7 +66,7 @@ module.exports = {
     4- On FAILED registration due to the `username` being taken,
       the response body should include a string exactly as follows: "username taken".
   */
-// });
+});
 
 // router.post('/login', (req, res) => {
 //   res.end('implement login, please!');
