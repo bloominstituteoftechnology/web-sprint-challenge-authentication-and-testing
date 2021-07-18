@@ -115,4 +115,16 @@ Users.findByUserName({ username })
   */
 });
 
+function makeToken(user){
+  const payload = {
+    subject:user.id,
+    username:user.username,
+    role:user.role
+  }
+  const options = {
+    expiresIn: "500s"
+  }
+  return jwt.sign(payload,jwtSecret,options)
+}
+
 module.exports = router;
