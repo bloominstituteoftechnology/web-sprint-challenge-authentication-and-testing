@@ -13,32 +13,28 @@ module.exports = {
 }
 */
 
-router.get('/', (req,res) => {
-  res.status(200).message("hello world")
-})
+// router.post('/register', (req, res) => {
+//   // res.end('implement register, please!');
 
-router.post('/register', (req, res) => {
-  // res.end('implement register, please!');
+//   // MY CODE STARTS HERE
 
-  // MY CODE STARTS HERE
+//   let user = req.body;
 
-  let user = req.body;
+//   // bcrypting the password before saving
+//   const rounds = process.env.BCRYPT_ROUNDS || 8; // 2 ^ 8
+//   const hash = bcrypt.hashSync(user.password, rounds);
 
-  // bcrypting the password before saving
-  const rounds = process.env.BCRYPT_ROUNDS || 8; // 2 ^ 8
-  const hash = bcrypt.hashSync(user.password, rounds);
+//   // never save the plain text password in the db
+//   user.password = hash
 
-  // never save the plain text password in the db
-  user.password = hash
-
-  Users.add(user)
-    .then(saved => {
-      res.status(201).json({
-        message: `Great to have you, ${saved.username}`,
-      });
-    })
-    .catch(next); 
-  // MY CODE ENDS HERE
+//   Users.add(user)
+//     .then(saved => {
+//       res.status(201).json({
+//         message: `Great to have you, ${saved.username}`,
+//       });
+//     })
+//     .catch(next); 
+//   // MY CODE ENDS HERE
 
 
   /*
@@ -66,10 +62,10 @@ router.post('/register', (req, res) => {
     4- On FAILED registration due to the `username` being taken,
       the response body should include a string exactly as follows: "username taken".
   */
-});
+// });
 
-router.post('/login', (req, res) => {
-  res.end('implement login, please!');
+// router.post('/login', (req, res) => {
+//   res.end('implement login, please!');
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -93,6 +89,6 @@ router.post('/login', (req, res) => {
     4- On FAILED login due to `username` not existing in the db, or `password` being incorrect,
       the response body should include a string exactly as follows: "invalid credentials".
   */
-});
+// });
 
 module.exports = router;
