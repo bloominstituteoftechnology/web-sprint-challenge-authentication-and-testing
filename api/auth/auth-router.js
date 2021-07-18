@@ -14,7 +14,29 @@ module.exports = {
 */
 
 router.post('/register', (req, res) => {
-  res.end('implement register, please!');
+  // res.end('implement register, please!');
+
+  // MY CODE STARTS HERE
+
+  let user = req.body;
+
+  // bcrypting the password before saving
+  const rounds = process.env.BCRYPT_ROUNDS || 8; // 2 ^ 8
+  const hash = bcrypt.hashSync(user.password, rounds);
+
+  // never save the plain text password in the db
+  user.password = hash
+
+  Users.add(user)
+    .then(saved => {
+      res.status(201).json({
+        message: `Great to have you, ${saved.username}`,
+      });
+    })
+    .catch(next); 
+  // MY CODE ENDS HERE
+
+
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
