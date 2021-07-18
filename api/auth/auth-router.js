@@ -1,8 +1,13 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 //const {jwtSecret} = require("../../config/secrets.js")
 const Users = require('../users-model.js');
+const {
+  checkForDuplicates,
+  checkPayload,
+  checkUsernameExists,
+} = require('../middleware/validate-user.js');
 
 /*
 module.exports = {
@@ -13,7 +18,7 @@ module.exports = {
 }
 */
 
-router.post('/register', (req, res) => {
+router.post('/register', checkForDuplicates, checkPayload, checkUsernameExists, (req, res) => {
   // res.end('implement register, please!');
 
   // MY CODE STARTS HERE
