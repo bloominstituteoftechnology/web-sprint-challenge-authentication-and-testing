@@ -85,7 +85,7 @@ Users.findByUserName(username)
       console.log("credentials are correct")
       const token = makeToken(user)
       res.status(200).json({
-          message: "welcome, Captain Marvel",
+          message: `welcome, ${user.username}`,
           token: token
       });
     } else {
