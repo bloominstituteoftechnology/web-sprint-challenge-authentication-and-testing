@@ -26,7 +26,7 @@ const checkPayload = (req, res, next) => {
     const password = req.body.password;
     if (!username || !password) {
         return res.status(400).json({
-            message: "Username and password required",
+            "username and password required"
         })
     } else {
         next()
