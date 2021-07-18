@@ -3,7 +3,9 @@ const bcrypt = require("bcryptjs")
 
 // Checks to see if the username is already in the DB
 const checkForDuplicates = async (req, res, next) => {
+    console.log("in the checkForDuplicates")
     try {
+      console.log("in the try")
         const username = req.body.username;
         const user = await Users.findByUserName(username).first()
         if (user) {
@@ -22,6 +24,7 @@ const checkForDuplicates = async (req, res, next) => {
 
 // Checks if the body has a username and password 
 const checkPayload = (req, res, next) => {
+  console.log("in the checkPayload")
     const username = req.body.username;
     const password = req.body.password;
     if (!username || !password) {

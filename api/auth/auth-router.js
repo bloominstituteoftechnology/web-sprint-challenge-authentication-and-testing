@@ -18,9 +18,9 @@ module.exports = {
 }
 */
 
-router.post('/register', checkForDuplicates, checkPayload, (req, res) => {
+router.post('/register', checkPayload, checkForDuplicates, (req, res) => {
   // res.end('implement register, please!');
-
+console.log("in the post")
   // MY CODE STARTS HERE
 
   let user = req.body;
