@@ -13,6 +13,10 @@ module.exports = {
 }
 */
 
+router.get('/', (req,res) => {
+  res.status(200).message("hello world")
+})
+
 router.post('/register', (req, res) => {
   // res.end('implement register, please!');
 
