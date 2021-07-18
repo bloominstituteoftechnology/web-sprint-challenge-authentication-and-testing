@@ -1,4 +1,17 @@
 const router = require('express').Router();
+const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken")
+const {jwtSecret} = require("../../config/secrets.js")
+const Users = require('../users-model.js');
+
+/*
+module.exports = {
+    add,
+    findUsers,
+    findByUserName,
+    findByUserId,
+}
+*/
 
 router.post('/register', (req, res) => {
   res.end('implement register, please!');
