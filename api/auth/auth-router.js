@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-//const {jwtSecret} = require("../../config/secrets.js")
+const {jwtSecret} = require("../../config/secrets.js")
 const Users = require('../users-model.js');
 const {
   checkForDuplicates,
@@ -72,16 +72,20 @@ router.post('/register', checkPayload, checkForDuplicates, (req, res) => {
 
 router.post('/login', checkPayload, (req, res) => {
 //   res.end('implement login, please!');
-
+console.log("starting /login");
 let { username, password } = req.body;
-
-Users.findByUserName({ username }) 
-  .then(([user]) => {
+console.log("username: ", username)
+console.log("password ", password)
+Users.findByUserName(username) 
+  .then((user) => {
+    console.log("user.username", user.username);
+    console.log("user.password", user.password);
     if (user && bcrypt.compareSync(password, user.password)) {
+      console.log("credentials are correct")
       const token = makeToken(user)
       res.status(200).json({
           message: "welcome, Captain Marvel",
-          token: "eyJhbGciOiJIUzI ... ETC ... vUPjZYDSa46Nwz8"
+          token: token
       });
     } else {
       res.status(401).json({ message: 'Invalid Credentials' });
@@ -120,8 +124,7 @@ Users.findByUserName({ username })
 function makeToken(user){
   const payload = {
     subject:user.id,
-    username:user.username,
-    role:user.role
+    username:user.username
   }
   const options = {
     expiresIn: "500s"
