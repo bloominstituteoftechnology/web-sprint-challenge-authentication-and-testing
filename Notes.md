@@ -15,4 +15,4 @@ NOTES:
 
    created a folder called secrets, with the index.js that is holding the JWT_SECRET
 
-   !!!! Require bcrypt and jsonwebtokens in the auth-router file!
+ 
