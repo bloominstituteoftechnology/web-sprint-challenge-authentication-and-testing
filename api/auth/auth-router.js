@@ -70,7 +70,7 @@ router.post('/register', checkPayload, checkForDuplicates, (req, res) => {
   */
 });
 
-router.post('/login', checkPayload, checkUsernameExists, (req, res) => {
+router.post('/login', checkPayload, (req, res) => {
 //   res.end('implement login, please!');
 
 let { username, password } = req.body;
