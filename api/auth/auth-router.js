@@ -71,8 +71,26 @@ router.post('/register', checkForDuplicates, checkPayload, checkUsernameExists, 
   */
 });
 
-// router.post('/login', (req, res) => {
+router.post('/login', (req, res) => {
 //   res.end('implement login, please!');
+
+let { username, password } = req.body;
+
+Users.findByUserName({ username }) 
+  .then(([user]) => {
+    if (user && bcrypt.compareSync(password, user.password)) {
+      const token = makeToken(user)
+      res.status(200).json({
+          message: "welcome, Captain Marvel",
+          token: "eyJhbGciOiJIUzI ... ETC ... vUPjZYDSa46Nwz8"
+      });
+    } else {
+      res.status(401).json({ message: 'Invalid Credentials' });
+    }
+  })
+  .catch(next);
+
+
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -96,6 +114,6 @@ router.post('/register', checkForDuplicates, checkPayload, checkUsernameExists, 
     4- On FAILED login due to `username` not existing in the db, or `password` being incorrect,
       the response body should include a string exactly as follows: "invalid credentials".
   */
-// });
+});
 
 module.exports = router;
