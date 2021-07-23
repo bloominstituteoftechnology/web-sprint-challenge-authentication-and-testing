@@ -1,22 +1,4 @@
-# Authentication and Testing Sprint Challenge
 
-**Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**
-
-This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **Authentication and Testing**. During this sprint, you studied **authentication, JSON web tokens, unit testing, and backend testing**. In your challenge this week, you will demonstrate your mastery of these skills by creating **a dad jokes app**.
-
-This is an individual assessment. All work must be your own. All projects will be submitted to Codegrade for automated review. You will also be given feedback by code reviewers on Monday following the challenge submission. For more information on the review process [click here.](https://www.notion.so/lambdaschool/How-to-View-Feedback-in-CodeGrade-c5147cee220c4044a25de28bcb6bb54a)
-
-You are not allowed to collaborate during the sprint challenge.
-
-## Project Setup
-
-- [ ] Fork and clone the repo. Delete your old fork from Github first if you are repeating this Unit.
-- [ ] Open the assignment in Canvas and click on the "Set up git" option.
-- [ ] Follow instructions to set up Codegrade's Webhook and Deploy Key.
-- [ ] Make a commit and push it to Github.
-- [ ] Check to see that Codegrade has accepted your git submission.
-
-For a step-by-step on setting up Codegrade see [this guide.](https://www.notion.so/lambdaschool/Submitting-an-assignment-via-Code-Grade-A-Step-by-Step-Walkthrough-07bd65f5f8364e709ecb5064735ce374)
 
 ## Project Instructions
 
@@ -62,6 +44,27 @@ Your finished project must include all of the following requirements (further in
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+
+JSON Web Tokens handles user authentication. They also have a  
+header, payload, signature. Headers are consisy of two parts; jwt, and algorithms.
+The payload holds the statement about the user's creditals. 
+
+JWTS are sent by the client. However, sessions are stored with cookie with every request.
+
+
+
 2. What does `bcryptjs` do to help us store passwords in a secure manner?
+
+It keeps the password secure  because it hash the database to vaildate inputs.'
+
+
 3. How are unit tests different from integration and end-to-end testing?
+
+
+Unit testing only specifys on a target a single node of code rather than intergration, test how difffernet parts work together.
+
+
 4. How does _Test Driven Development_ change the way we write applications and tests?
+
+It’s a modern approach. Saves the project for late release or avoids projects being over budget.
+To make sure changes are not impacting the unchanged feature.
