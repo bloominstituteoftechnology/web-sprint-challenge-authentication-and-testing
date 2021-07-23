@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const tokenBuilder = require('./token-builder');
+
 
 
 router.post('/register', (req, res) => {
@@ -31,7 +32,7 @@ router.post('/register', (req, res) => {
       the response body should include a string exactly as follows: "username taken".
   */
 
-      
+
 });
 
 router.post('/login', (req, res) => {
@@ -62,5 +63,6 @@ router.post('/login', (req, res) => {
 
 
 });
+
 
 module.exports = router;
