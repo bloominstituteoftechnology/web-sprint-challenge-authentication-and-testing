@@ -24,11 +24,12 @@ const checkPayload = (req, res, next) => {
 //       the response body should include a string exactly as follows: "username taken".
 const uniqueUsername = async (req, res, next) => {
     try {
-        const existingUsername = await Users.findByUsername(req.body.username)
-        if (existingUsername) {
-            next({status: 400, message: 'username taken'})
-        } else {
+        const existingUsername = await Users.findByUsername({ username: req.body.username })
+        if (!existingUsername.length) {
+            // req.user = existingUsername[0]
             next()
+        } else {
+            next({ status: 422, message: 'username taken' })
         }
     } catch (err) {
         next(err)
