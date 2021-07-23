@@ -1,11 +1,18 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const tokenBuilder = require('./token-builder');
+const Users = require('../users/users-model');
+// import middlewares - auth, restricted?
+const restricted = require('../middleware/restricted');
+const {
+  checkPayload,
+  uniqueUsername,
+  checkLoginPayload,
+} = require('../middleware/auth-middleware');
 
 
 
-router.post('/register', (req, res) => {
-  res.end('implement register, please!');
+router.post('/register', checkPayload, uniqueUsername, (req, res, next) => {
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -31,12 +38,21 @@ router.post('/register', (req, res) => {
     4- On FAILED registration due to the `username` being taken,
       the response body should include a string exactly as follows: "username taken".
   */
+  let user = req.body
+  
+  const rounds = process.env.BCRYPT_ROUNDS || 8;
+  const hash = bcrypt.hashSync(user.password, rounds);
 
+  user.password = hash
 
+  Users.add(user)
+      .then(newUser => {
+        res.status(201).json(newUser)
+      })
+      .catch(next)
 });
 
-router.post('/login', (req, res) => {
-  res.end('implement login, please!');
+router.post('/login', checkPayload, checkLoginPayload, (req, res, next) => {
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -60,8 +76,21 @@ router.post('/login', (req, res) => {
     4- On FAILED login due to `username` not existing in the db, or `password` being incorrect,
       the response body should include a string exactly as follows: "invalid credentials".
   */
-
-
+  const { username, password } = req.body
+  
+  Users.findByUsername(username)
+  .then(([user]) => {
+  if (user && bcrypt.compareSync(password, req.user.password)) {
+    const token = tokenBuilder(user)
+    res.status(200).json({
+      message: `welcome, ${username}`,
+      token,
+    })
+    } else {
+      next({ status:401, message: 'invalid credentials' })
+    }
+  })
+  .catch(next)
 });
 
 
