@@ -1,10 +1,7 @@
-// const { jwtSecret } = require('../../config/secrets');
-// const jwt = require('jsonwebtoken');
 const Users = require('../users/users-model');
 
 // On FAILED registration or login due to `username` or `password` missing from the request body,
 //       the response body should include a string exactly as follows: "username and password required".
-
 const checkPayload = (req, res, next) => {
     try {
         const { username, password } = req.body
@@ -26,10 +23,9 @@ const uniqueUsername = async (req, res, next) => {
     try {
         const existingUsername = await Users.findByUsername({ username: req.body.username })
         if (!existingUsername.length) {
-            // req.user = existingUsername[0]
             next()
         } else {
-            next({ status: 422, message: 'username taken' })
+            next({ status: 401, message: 'username taken' })
         }
     } catch (err) {
         next(err)
@@ -40,13 +36,10 @@ const uniqueUsername = async (req, res, next) => {
 //       the response body should include a string exactly as follows: "invalid credentials".
 const checkLoginPayload = async (req, res, next) => {
     try {
-        // const { username, password } = req.body
         const user = await Users.findByUsername(req.body.username)
-        // need to decode hash for comparison, 
-        // or need to convert inputted password to hash before calling db
         const password = await Users.validatePassword(req.body.password)
         if (!user || !password) {
-            next({status: 400, massage: 'invalid credentials'})
+            next({ status: 400, message: 'invalid credentials' })
         } else {
             next()
         }
@@ -59,5 +52,4 @@ module.exports = {
     checkPayload,
     uniqueUsername,
     checkLoginPayload,
-
-}
+};

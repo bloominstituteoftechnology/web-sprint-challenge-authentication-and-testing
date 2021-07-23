@@ -2,8 +2,6 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const tokenBuilder = require('./token-builder');
 const Users = require('../users/users-model');
-// import middlewares - auth, restricted?
-// const restricted = require('../middleware/restricted');
 const {
   checkPayload,
   uniqueUsername,
@@ -38,13 +36,9 @@ router.post('/register', checkPayload, uniqueUsername, (req, res, next) => {
     4- On FAILED registration due to the `username` being taken,
       the response body should include a string exactly as follows: "username taken".
   */
-  // let user = req.body
   const { username, password } = req.body
   
-  // const rounds = process.env.BCRYPT_ROUNDS || 8;
   const hash = bcrypt.hashSync(password, 8);
-
-  // password = hash
 
   Users.add({ username, password: hash })
       .then(newUser => {
@@ -87,17 +81,11 @@ router.post('/login', checkPayload, checkLoginPayload, (req, res, next) => {
       message: `welcome, ${username}`,
       token
     })
-    // next({
-    //   status: 200,
-    //   message: `welcome, ${username}`,
-    //   token,
-    // })
     } else {
       next({ status:401, message: 'invalid credentials' })
     }
   })
   .catch(next)
 });
-
 
 module.exports = router;

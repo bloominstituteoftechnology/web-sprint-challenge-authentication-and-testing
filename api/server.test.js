@@ -2,47 +2,62 @@ const request = require('supertest');
 const db = require('../data/dbConfig');
 const server = require('./server');
 
-// Write your tests here
 test('sanity', () => {
   expect(true).toBe(true)
 })
 
 test('is the correct environment', () => {
-  expect(process.env.DB_ENV).toBe('testing')
+  expect(process.env.NODE_ENV).toBe('testing')
 })
-beforeAll(async () => {
-  await db.migrate.rollback()
-  await db.migrate.latest()
-}) // migrate
-beforeEach(async () => {
-  await db.seed.run()
-}) // truncate and seed fresh data
-afterAll(async () => {
-  await db.destroy()
-}) // disconnect from the db
+// beforeAll(async () => {
+//   await db.migrate.rollback()
+//   await db.migrate.latest()
+// })
+// beforeEach(async () => {
+//   await db.seed.run()
+// }) 
+// afterAll(async () => {
+//   await db.destroy()
+// })
 
 describe('[POST] /register', () => {
   // fill in empty quotes 
-  test('', async () => {
-    const res = await request(server).post('/register').send({
-      username: 'bill', 
-      password: 1234
+  // test('responds with registered user', async () => {
+  //   const res = await request(server).post('/api/auth/register').send({
+  //     username: 'bill', 
+  //     password: 'abcd',
+  //   })
+  //   expect(res.body).toMatchObject({id: 1, name: 'bill', password: 'abcd'})
+  // })
+  test('responds with error when no username', async () => {
+    const res = await request(server).post('/api/auth/register').send({
+      username: '', 
+      password: 'abcd',
     })
-    expect(res.body).toMatchObject({id: 1, name: 'bill'})
+    expect(res.body).toMatchObject({message: 'username and password required'})
   })
-   // fill in empty quotes 
-  test('', async () => {
-    // don't include username, expect error message
+  test('responds with error when no password', async () => {
+    const res = await request(server).post('/api/auth/register').send({
+      username: 'bill', 
+      password: '',
+    })
+    expect(res.body).toMatchObject({message: 'username and password required'})
   })
 })
 
 describe('[POST] /login', () => {
-   // fill in empty quotes 
-  test('', async () => {
+  test('responds with ', async () => {
     const res = await request(server).post('/login').send({
       username: 'bill', 
-      password: 1234
+      password: 'abcd'
     })
     expect(res.body).toMatchObject({})
+  })
+  test('responds with error when no username', async () => {
+    const res = await request(server).post('/login').send({
+      username: '', 
+      password: 'abcd'
+    })
+    expect(res.body).toMatchObject({message: 'username and password required'})
   })
 })
