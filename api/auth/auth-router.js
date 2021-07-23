@@ -81,7 +81,7 @@ router.post('/login', checkPayload, checkLoginPayload, (req, res, next) => {
   
   Users.findByUsername(username)
   .then(([user]) => {
-  if (user && bcrypt.compareSync(password, req.user.password)) {
+  if (user && bcrypt.compareSync(password, user.password)) {
     const token = tokenBuilder(user)
     next({
       status: 200,
