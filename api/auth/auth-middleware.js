@@ -17,6 +17,23 @@ const checkUsernameDoesNotExists = async (req, res, next) => {
   }
 };
 
+const checkUsernameExists = async (req, res, next) => {
+  try {
+    const [user] = await findBy({ username: req.body.username });
+    if (!user) {
+      next({
+        status: 401,
+        message: "invalid credentials",
+      });
+    } else {
+      req.user = user;
+      next();
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 const checkNewUserPayload = (req,res,next) => {
   const { username, password } = req.body;
   if(!username || username === undefined){
@@ -37,5 +54,6 @@ const checkNewUserPayload = (req,res,next) => {
 
 module.exports = {
   checkUsernameDoesNotExists,
-  checkNewUserPayload
+  checkNewUserPayload,
+  checkUsernameExists
 };
