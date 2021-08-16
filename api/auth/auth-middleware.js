@@ -17,7 +17,25 @@ const checkUsernameDoesNotExists = async (req, res, next) => {
   }
 };
 
+const checkNewUserPayload = (req,res,next) => {
+  const { username, password } = req.body;
+  if(!username || username === undefined){
+    next({
+      status:401,
+      message:"username and password are required"
+    });
+  } else if (!password){
+    next({
+      status:401,
+      message:"username and password are required"
+    });
+  } else {
+    next();
+  }
+};
+
 
 module.exports = {
-  checkUsernameDoesNotExists
+  checkUsernameDoesNotExists,
+  checkNewUserPayload
 };

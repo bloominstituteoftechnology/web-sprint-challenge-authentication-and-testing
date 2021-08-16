@@ -1,21 +1,17 @@
 const bcrypt = require('bcryptjs');
 const router = require('express').Router();
-const { checkUsernameDoesNotExists } = require('./auth-middleware');
+const { checkUsernameDoesNotExists, checkNewUserPayload } = require('./auth-middleware');
 const { find, findById, add } = require('./auth-model');
 
-router.post('/register', checkUsernameDoesNotExists, (req, res, next) => {
+router.post('/register', checkUsernameDoesNotExists, checkNewUserPayload, (req, res, next) => {
   const { username, password } = req.body;
 
-  if (!username || !password) {
-    res.status(401).json({ message: "username and password required" });
-  } else {
-    const hash = bcrypt.hashSync(password, 8);
-    add({ username, password: hash })
-      .then(data => {
-        res.status(201).json(data);
-      })
-      .catch(next);
-  }
+  const hash = bcrypt.hashSync(password, 8);
+  add({ username, password: hash })
+    .then(data => {
+      res.status(201).json(data);
+    })
+    .catch(next);
 });
 /*
   IMPLEMENT
