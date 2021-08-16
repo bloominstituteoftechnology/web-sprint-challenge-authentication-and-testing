@@ -44,7 +44,7 @@ router.post('/register', checkUsernameDoesNotExists, checkNewUserPayload, (req, 
 router.post('/login', checkUsernameExists,(req, res, next) => {
   const createToken = (user) => {
     const payload = {
-      subject: user.user_id,
+      subject: user.id,
       username: user.username,
     };
 

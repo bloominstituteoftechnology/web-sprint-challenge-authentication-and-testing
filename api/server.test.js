@@ -10,7 +10,7 @@ test('sanity', () => {
 describe('server.js', () => {
   test('[1] responds with the correct message on valid credentials', async () => {
     const res = await request(server).post('/api/auth/login').send({ username: 'bobba', password: 'grogu' })
-    expect(res.body.message).toMatch(/welcome bobba/i)
+    expect(res.body.message).toMatch(/welcome bobba/i);
   }, 500);
 
   test('[2] responds with a token with correct { username,  exp, iat }', async () => {
