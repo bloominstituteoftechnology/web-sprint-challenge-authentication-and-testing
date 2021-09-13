@@ -6,7 +6,7 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "migrate": "knex migrate:latest",
-    "test": " NODE_ENV=testing jest --watchAll --verbose --runInBand --silent"
+    "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand --silent"
   },
   "repository": {
     "type": "git",
@@ -14,9 +14,12 @@
   },
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "cors": "2.8.5",
     "express": "4.17.1",
     "helmet": "4.6.0",
+    "jsonwebtoken": "^8.5.1",
     "knex": "0.95.6",
     "sqlite3": "5.0.2"
   },

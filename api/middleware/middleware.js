@@ -20,7 +20,7 @@ const checkUserInDB =  async (req,res,next) => {
             res.status(401).json("username taken")
     } 
     } catch(e) {
-
+        res.json(`server error: ${e.message}`)
 
     }
 }

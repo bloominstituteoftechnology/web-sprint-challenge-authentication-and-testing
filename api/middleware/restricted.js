@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const {jwtSecret} = require('../../secret')
 
-const restricted = (req, res, next) => {
+module.exports = (req, res, next) => {
   const token = req.headers.authorization
 
   if(!token){
@@ -12,9 +12,10 @@ const restricted = (req, res, next) => {
         res.status(401).json("token invalid")
       }else{
         req.decodedToken = decoded
+        next()
       }
     })
-  }
+  } 
 
   
 }
@@ -31,6 +32,4 @@ const restricted = (req, res, next) => {
   */
 
 
-  module.exports = {
-    restricted,
-  }
+  

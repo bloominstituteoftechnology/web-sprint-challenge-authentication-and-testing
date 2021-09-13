@@ -46,7 +46,7 @@ router.post('/register', checkPayload, checkUserInDB, async (req, res) => {
   */
 });
 
-router.post('/login', checkUsernameExists, (req, res) => {
+router.post('/login', checkPayload, checkUsernameExists, (req, res) => {
  let {username, password} = req.body
 
  Jokes.findByUserName({username})
@@ -54,7 +54,7 @@ router.post('/login', checkUsernameExists, (req, res) => {
    if(user && bcrypt.compareSync(password, user.password)){
      const token = makeToken(user)
      res.status(200).json({
-       message: `welcome back ${user.name}`,
+       message: `welcome ${user.name}`,
        token
      })
    } else {
@@ -62,7 +62,6 @@ router.post('/login', checkUsernameExists, (req, res) => {
         message: "username and password required"
       })
    }
-  //  dont understand how to do 3
 
   
    
