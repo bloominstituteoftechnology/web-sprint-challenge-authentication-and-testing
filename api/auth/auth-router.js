@@ -14,6 +14,7 @@ router.post('/register', checkPayload, checkUserInDB, async (req, res) => {
   res.status(201).json(newUser)
   } catch(e) {
     res.status(500).json({message: e.message})
+    
   }
 
   
@@ -66,7 +67,7 @@ router.post('/login', checkPayload, checkUsernameExists, (req, res) => {
   
    
  })
-  /*
+   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
 
