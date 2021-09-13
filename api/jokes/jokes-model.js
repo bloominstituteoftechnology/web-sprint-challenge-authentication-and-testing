@@ -27,6 +27,7 @@ const findByUserId = (id) => {
 function findBy(filter) {
     return db("users").where(filter).orderBy("id");
   }
+
   
 
 module.exports = {
@@ -34,5 +35,5 @@ module.exports = {
     findUsers,
     findByUserName,
     findByUserId,
-    findBy
+    findBy, 
 }
