@@ -1,3 +1,5 @@
+const path = require("path");
+
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -14,6 +16,8 @@ const jokesRouter = require("./jokes/jokes-router.js");
 const userRouter = require("./users/usersRouter");
 
 const server = express();
+
+server.use(express.static(path.join(__dirname, "../client")));
 
 server.use(helmet());
 server.use(cors());
