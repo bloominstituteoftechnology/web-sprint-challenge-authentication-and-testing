@@ -121,5 +121,5 @@ dist
 # VSCode
 .vscode
 
-# Test db
-test.db3
+# databases
+*.db3
