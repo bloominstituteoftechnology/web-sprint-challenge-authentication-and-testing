@@ -43,7 +43,7 @@ describe('[POST] /login', () => {
       })
   })
   
-  test('User login contains token', async () => {
+  test('User login contains  token', async () => {
     expect(login.text).toMatch('token')
   })
 
