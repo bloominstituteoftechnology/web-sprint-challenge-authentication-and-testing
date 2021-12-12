@@ -32,6 +32,11 @@ describe('[POST] /register', () => {
     const users = await db('users')
     expect(users[0].username).toEqual("NewMabyBis")
   })
+  test('check the new user is added', async () => {
+    const users = await db('users')
+    expect(users[0].password).not.toBe("sidurwejfnjkfnvsuvbnsejkrvservhbs")
+  })
+  
 })
 
 describe('[POST] /login', () => {
@@ -42,9 +47,12 @@ describe('[POST] /login', () => {
               password: "sidurwejfnjkfnvsuvbnsejkrvservhbs"
       })
   })
-  
+
   test('User login contains  token', async () => {
     expect(login.text).toMatch('token')
+  })
+  test('User login contains  token', async () => {
+    expect(login.text).toMatch('message')
   })
 
   test('Greeting the user', async () => {
