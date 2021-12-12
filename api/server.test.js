@@ -3,7 +3,7 @@ const request = require('supertest');
 const db = require('../data/dbConfig');
 require('dotenv').config();
 
-test('Expect test env to be testing', () => {
+test('Expect test env to be  testing', () => {
   expect(process.env.NODE_ENV).toEqual('testing')
 });
 
@@ -32,7 +32,7 @@ describe('[POST] /register', () => {
     const users = await db('users')
     expect(users[0].username).toEqual("NewMabyBis")
   })
-  test('check the new user is added', async () => {
+  test('check the hashing', async () => {
     const users = await db('users')
     expect(users[0].password).not.toBe("sidurwejfnjkfnvsuvbnsejkrvservhbs")
   })
