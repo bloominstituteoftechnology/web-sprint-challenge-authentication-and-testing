@@ -1,9 +1,10 @@
 const server = require('./server');
 const request = require('supertest');
 const db = require('../data/dbConfig');
+require('dotenv').config();
 
-test('sanity', () => {
-  expect(true).toBe(true)
+test('Expect test env to be testing', () => {
+  expect(process.env.NODE_ENV).toEqual('testing')
 });
 
 beforeAll(async () => {
@@ -51,10 +52,3 @@ describe('[POST] /login', () => {
   })
 })
 
-describe('[GET] /jokes', () => {
-  test('Get jokes', async () => {
-    const res = await request(server).get('/jokes')
-    console.log(res)
-    expect(true).toBe(true)
-  })
-})
