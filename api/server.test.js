@@ -28,7 +28,7 @@ describe('[POST] /register', () => {
     const users = await db('users')
     expect(users).toHaveLength(1)
   })
-  test('check the new user is added', async () => {
+  test('check the new user has been added', async () => {
     const users = await db('users')
     expect(users[0].username).toEqual("NewMabyBis")
   })
