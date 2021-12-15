@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -12,8 +13,13 @@ const server = express();
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
-
+server.use((err, req, res, next) => {
+    res.status(err.status || 500).json({
+        message: err.message,
+        stack: err.stack,
+})
+})
 server.use('/api/auth', authRouter);
 server.use('/api/jokes', restrict, jokesRouter); // only logged-in users should have access!
-
+server.get('/', (req, res) => {res.send('Hello there traveler')})
 module.exports = server;
