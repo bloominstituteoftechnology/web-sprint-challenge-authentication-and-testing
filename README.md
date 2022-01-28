@@ -9,10 +9,10 @@ This is an individual assessment. All work must be your own. All projects will b
 You are not allowed to collaborate during the sprint challenge.
 
 ## Project Setup
-
+<!-- 
 - [ ] Run `npm install` to install your dependencies.
 - [ ] Build your database executing `npm run migrate`.
-- [ ] Run tests locally executing `npm test`.
+- [ ] Run tests locally executing `npm test`. -->
 
 ## Project Instructions
 
@@ -28,8 +28,8 @@ We will hash the user's password using `bcryptjs`, and use JSON Web Tokens and t
 
 Your finished project must include all of the following requirements (further instructions are found inside each file):
 
-- [ ] An authentication workflow with functionality for account creation and login, implemented inside `api/auth/auth-router.js`.
-- [ ] Middleware used to restrict access to resources from non-authenticated requests, implemented inside `api/middleware/restricted.js`.
+<!-- - [ ] An authentication workflow with functionality for account creation and login, implemented inside `api/auth/auth-router.js`. -->
+<!-- - [ ] Middleware used to restrict access to resources from non-authenticated requests, implemented inside `api/middleware/restricted.js`. -->
 - [ ] A minimum of 2 tests per API endpoint, written inside `api/server.test.js`.
 
 **IMPORTANT Notes:**
