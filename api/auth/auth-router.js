@@ -1,7 +1,34 @@
+const bcrypt = require('bcryptjs');
+const jwt  = require('jsonwebtoken');
 const router = require('express').Router();
+const User = require('../user/user-model');
+const { TOKEN_SECRET } = require('../../config/secrets');
+const uniqueUsername = require('../middleware/uniqueUsername');
+const usernameExists = require('../middleware/usernameExists');
 
-router.post('/register', (req, res) => {
-  res.end('implement register, please!');
+function buildToken(userObj) {
+  const payload = {
+    subject: userObj.id,
+    username: userObj.username,
+  }
+  const options = {
+    expiresIn: '1d',
+  }
+  return jwt.sign(payload, TOKEN_SECRET, options )
+}
+router.post('/register',uniqueUsername, async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const hash = bcrypt.hashSync(password, 8);
+    const newUser = await User.add({ 
+      username, 
+      password: hash,
+    });
+      res.status(201).json(newUser);
+  } catch(err) {
+    res.status(500).json({ message: err.message})
+  }
+
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -29,8 +56,21 @@ router.post('/register', (req, res) => {
   */
 });
 
-router.post('/login', (req, res) => {
-  res.end('implement login, please!');
+router.post('/login', usernameExists, async(req, res, next) => {
+  try{
+    const { body: { password }, user } = req;
+      if (bcrypt.compareSync(password, user.password)) {
+        const token = buildToken(user)
+        res.json({
+          message: `welcome ${user.username}`, 
+          token: token,
+        })
+      } else {
+        res.status(401).json({message: 'invalid credentials' })
+      }
+    } catch (err) {
+      res.status(500).json({ message: err.message})
+    }
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
