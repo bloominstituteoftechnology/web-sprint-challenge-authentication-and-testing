@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt  = require('jsonwebtoken');
 const router = require('express').Router();
-const User = require('../../user/user-model');
+const User = require('../user/user-model');
 const { TOKEN_SECRET } = require('../../config/secrets');
 const uniqueUsername = require('../middleware/uniqueUsername');
 
@@ -13,9 +13,9 @@ function buildToken(userObj) {
   const options = {
     expriresIn: '1d',
   }
-  return jwt.sign(playload, TOKEN_SECRET, options )
+  return jwt.sign(payload, TOKEN_SECRET, options )
 }
-router.post('/register', uniqueUsername, async (req, res) => {
+router.post('/register',uniqueUsername, async (req, res) => {
   try {
     const { username, password } = req.body;
     const hash = bcrypt.hashSync(password, 8);

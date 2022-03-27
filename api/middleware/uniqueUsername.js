@@ -1,6 +1,6 @@
-const User = require('../../user/user-model');
+const User = require('../user/user-model');
 
-async function uniqueUsername(req, res, next) {
+module.exports = async function uniqueUsername(req, res, next) {
     const { username } = req.body;
     const user = await User.findByUsername(username);
     if (user) {
@@ -8,8 +8,4 @@ async function uniqueUsername(req, res, next) {
     } else {
         next()
     }
-}
-
-module.exports = {
- uniqueUsername
 }
