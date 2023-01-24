@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const db = require('../../data/dbConfig')
 const bcrypt = require('bcryptjs')
-const { checkFormat, checkNameTaken } = require('./auth.middleware')
+const { checkFormat, checkNameTaken,} = require('./auth.middleware')
 const JWT = require('jsonwebtoken')
 const { JWT_SECRET,BCRYPT_ROUNDS } = require('../../config')
 
@@ -18,15 +18,15 @@ function generateToken(user) {
 
 router.post('/register', checkFormat, checkNameTaken, async (req, res, next) => {
   try {
-    const { username, password } = req.body
+    const { username, password } = req.body;
     const newUser = {
       username: username,
       password: await bcrypt.hash(password, BCRYPT_ROUNDS)
-    }
-    const result = await db('users').insert(newUser)
-      .then(([id]) => db('users').where('id', id).first())
+    };
+    const newID = await db('users').insert(newUser);
+    const [result] = await db('users').where('id',newID);
 
-    res.status(201).json(result)
+    res.status(201).json(result);
   } catch (err) {
     next(err)
   }
@@ -68,9 +68,9 @@ router.post('/login', checkFormat, async (req, res, next) => {
           res.status(200).json({
             message: `welcome, ${username}`,
             token: token
-          })
+          });
         }else{
-          next({ status: 401, message: 'invalid credentials'})
+          next({ status: 401, message: 'invalid credentials'});
         }
       })
   } catch (err) {

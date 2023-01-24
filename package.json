@@ -8,7 +8,7 @@
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
     "resetdb": "npm run rollback && npm run migrate",
-    "test": "cross-env NODE_ENV=testing jest --verbose --watchAll --runInBand"
+    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand --silent"
   },
   "repository": {
     "type": "git",

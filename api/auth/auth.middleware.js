@@ -21,7 +21,7 @@ const restricted = (req, res, next) => {
 const checkFormat = (req, res, next) => {
     try {
         const { username, password } = req.body
-        if (username.trim() && password.trim()) {
+        if (username && password) {
             next();
         } else {
             next({ status: 400, message: "username and password required" })
