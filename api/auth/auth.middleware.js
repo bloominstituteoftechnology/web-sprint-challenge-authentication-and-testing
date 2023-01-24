@@ -14,7 +14,7 @@ const restricted = (req, res, next) => {
             }
         })
     } else {
-        next({ status: 402, message: 'endpoint restricted' })
+        next({ status: 402, message: 'token required' })
     }
 }
 
