@@ -1,3 +1,4 @@
+
 const db = require('../data/dbConfig')
 const request = require('supertest')
 const server = require('../api/server')
@@ -14,6 +15,7 @@ beforeEach( async () => {
 // afterAll( async () => {
 //   await db.destroy()
 // })
+
 
 test('sanity', () => {
   expect(true).toBe(true)
@@ -86,5 +88,3 @@ describe('[GET] /api/jokes', () => {
     expect(res.status).toBe(401) 
   })
 })
-
-
