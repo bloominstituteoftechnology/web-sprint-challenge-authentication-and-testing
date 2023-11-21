@@ -26,15 +26,15 @@ test('sanity', () => {
 
 describe('[POST] /api/auth/register', () => {
   test.only('gets success status', async () => {
-    const credentials = {username: 'hello', password: '1234'}
-    const res = await request(server).post('/api/auth/register').send(credentials)
+    const creds = {username: 'hello', password: '1234'}
+    const res = await request(server).post('/api/auth/register').send(creds)
     expect(res.status).toBe(201)
   })
   test.only('adds credentials to database', async () => {
     const creds = {username: 'hello', password: '1234'}
     await request(server).post('/api/auth/register').send(creds)
-    const res = await db('users').select('username').where('username', creds.username)
-    expect(res.body).toMatchObject({username: 'hello'})
+    const res = await db('users').select('username').where('username', creds.username).first()
+    expect(res.username).toBe(creds.username)
   })
 })
 

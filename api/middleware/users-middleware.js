@@ -29,7 +29,7 @@ async function insert (req, res, next) {
         await db('users').insert({username, password})
 
         const user = await db('users').select('*').where('username', username).first()
-        next({status: 201, user})
+        res.status(201).json(user)
     }
     catch (error) {
         next(error)
