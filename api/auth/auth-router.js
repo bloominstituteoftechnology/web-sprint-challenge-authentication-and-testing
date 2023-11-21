@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs')
-const db = require('../../data/dbConfig')
-const {checkUsP, checkUsername, insert} = require('../middleware/users-middleware')
+const {checkUsP, checkUsername, insert, checkLogin} = require('../middleware/users-middleware')
 const jwt = require('jsonwebtoken')
 const {JWT_SECRET} = require('../../api/secrets/index')
 
@@ -45,10 +44,17 @@ function buildToken (user) {
   return jwt.sign(payload, JWT_SECRET, options)
 }
 
-router.post('/login', checkUsP, checkUsername, async (req, res, next) => {
+router.post('/login', checkUsP, checkLogin, async (req, res, next) => {
   try {
     if (bcrypt.compareSync(req.body.password, req.user.password)) {
-
+      const token = buildToken(req.body)
+      res.status(200).json({
+        message: `welcome, ${req.user.username}`,
+        token
+      })
+    }
+    else {
+      next({status: 401, message: 'invalid credentials'})
     }
   }
   catch (error) {

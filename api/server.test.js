@@ -25,12 +25,12 @@ test('sanity', () => {
 
 
 describe('[POST] /api/auth/register', () => {
-  test.only('gets success status', async () => {
+  test('gets success status', async () => {
     const creds = {username: 'hello', password: '1234'}
     const res = await request(server).post('/api/auth/register').send(creds)
     expect(res.status).toBe(201)
   })
-  test.only('adds credentials to database', async () => {
+  test('adds credentials to database', async () => {
     const creds = {username: 'hello', password: '1234'}
     await request(server).post('/api/auth/register').send(creds)
     const res = await db('users').select('username').where('username', creds.username).first()
@@ -44,13 +44,14 @@ describe('[POST] /api/auth/register', () => {
 
 
 describe('[POST] /api/auth/login', () => {
-  test.only('gets a success status', async () => {
+  test('gets a success status', async () => {
     const creds = {username: 'hello', password: '1234'}
-    await request(server).post('/api/auth/register').send(creds)
+    const res1 = await request(server).post('/api/auth/register').send(creds)
+    expect(res1.status).toBe(201)
     const res = await request(server).post('/api/auth/login').send(creds)
     expect(res.status).toBe(200)
   })
-  test.only('valid login gets a token', async () => {
+  test('valid login gets a token', async () => {
     const creds = {username: 'hello', password: '1234'}
     await request(server).post('/api/auth/register').send(creds)
     const res = await request(server).post('/api/auth/login').send(creds)
