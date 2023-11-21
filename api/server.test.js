@@ -11,9 +11,9 @@ beforeEach( async () => {
   await db.seed.run()
 })
 
-afterAll( async () => {
-  await db.destroy()
-})
+// afterAll( async () => {
+//   await db.destroy()
+// })
 
 test('sanity', () => {
   expect(true).toBe(true)
@@ -65,17 +65,25 @@ describe('[POST] /api/auth/login', () => {
 
 
 describe('[GET] /api/jokes', () => {
-  test('valid token gets the jokes', async () => {
+  test.only('valid token gets the jokes', async () => {
+
     const creds = {username: 'hello', password: '1234'}
-    await request(server).post('/api/auth/register').send(creds)
-    await request(server).post('/api/auth/login').send(creds)
-    const res = await request(server).get('/api/jokes')
-    expect(res.body.jokes).toHaveLength(3)
+    const res1 = await request(server).post('/api/auth/register').send(creds)
+    expect(res1.status).toBe(201)
+
+    const res2 = await request(server).post('/api/auth/login').send(creds)
+    expect(res2.body.token).toBeDefined()
+
+    const res3 = await request(server).get('/api/jokes').set('Authorization', res2.body.token)
+    expect(res3.body.message).toHaveLength(3) 
   })
+
+
+
   test('no token gets error', async () => {
     const res = await request(server).get('/api/jokes')
     expect(res.body.jokes).not.toBeDefined()
-    expect(res.status).toBe(401)
+    expect(res.status).toBe(401) 
   })
 })
 
