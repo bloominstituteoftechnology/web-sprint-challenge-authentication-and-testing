@@ -2,12 +2,12 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs')
 const db = require('../../data/dbConfig')
 const {checkUsP, checkUsername, insert} = require('../middleware/users-middleware')
+const jwt = require('jsonwebtoken')
+const {JWT_SECRET} = require('../../api/secrets/index')
 
 router.post('/register', checkUsP, checkUsername, async (req, res, next) => {
   await insert(req, res, next)
 });
-
-
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -33,11 +33,27 @@ router.post('/register', checkUsP, checkUsername, async (req, res, next) => {
     4- On FAILED registration due to the `username` being taken,
       the response body should include a string exactly as follows: "username taken".
   */
+function buildToken (user) {
+  const payload = {
+    subject: user.id,
+    role: 'all access',
+    username: user.username
+  }
+  const options = {
+    expiresIn: '1d'
+  }
+  return jwt.sign(payload, JWT_SECRET, options)
+}
 
+router.post('/login', checkUsP, checkUsername, async (req, res, next) => {
+  try {
+    if (bcrypt.compareSync(req.body.password, req.user.password)) {
 
-router.post('/login', async (req, res, next) => {
-
-
+    }
+  }
+  catch (error) {
+    next(error)
+  }
 });
   /*
     IMPLEMENT

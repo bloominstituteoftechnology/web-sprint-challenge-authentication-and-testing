@@ -44,13 +44,13 @@ describe('[POST] /api/auth/register', () => {
 
 
 describe('[POST] /api/auth/login', () => {
-  test('gets a success status', async () => {
+  test.only('gets a success status', async () => {
     const creds = {username: 'hello', password: '1234'}
     await request(server).post('/api/auth/register').send(creds)
     const res = await request(server).post('/api/auth/login').send(creds)
     expect(res.status).toBe(200)
   })
-  test('valid login gets a token', async () => {
+  test.only('valid login gets a token', async () => {
     const creds = {username: 'hello', password: '1234'}
     await request(server).post('/api/auth/register').send(creds)
     const res = await request(server).post('/api/auth/login').send(creds)
